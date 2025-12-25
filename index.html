@@ -2,146 +2,207 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Antony Automations</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Basic Styling -->
   <style>
-    body {
+    :root {
+      --bg: #0b0b0b;
+      --text: #f5e6c8;
+      --muted: #c9b89a;
+      --accent: #e7d3a1;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: #222;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", serif;
       line-height: 1.6;
     }
-    header {
-      background: #111827;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 3rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin: 12px 0 24px;
-    }
-    .btn {
-      background: #4f46e5;
-      color: #fff;
-      padding: 14px 28px;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-    }
-    .container {
-      max-width: 960px;
+
+    section {
+      padding: 80px 20px;
+      max-width: 900px;
       margin: auto;
-      padding: 40px 20px;
     }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 40px;
+
+    h1, h2, h3 {
+      font-weight: 500;
+      color: var(--accent);
     }
-    .service-card {
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      text-align: center;
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
     }
-    .service-card h3 { margin-bottom: 8px; }
-    .about {
-      background: #f9fafb;
-      padding: 60px 20px;
-      text-align: center;
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 30px;
     }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 26px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    ul {
+      list-style: disc;
+      margin-left: 20px;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .divider {
+      border-top: 1px solid #222;
+      margin: 60px 0;
+    }
+
     footer {
+      padding: 40px 20px;
       text-align: center;
-      padding: 20px;
-      background: #111827;
-      color: #fff;
+      font-size: 14px;
+      color: #888;
+      border-top: 1px solid #222;
     }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 34px;
+      }
+      h2 {
+        font-size: 28px;
+      }
     }
-    form > div { margin-bottom: 15px; }
   </style>
 </head>
+
 <body>
 
   <!-- HERO -->
-  <header>
-    <h1>Antony Automations</h1>
-    <p>Smart Automation Solutions for businesses and professionals</p>
-    <a href="#contact" class="btn">Get Started</a>
-  </header>
+  <section>
+    <h1>
+      Automate Your Business.<br/>
+      Save Time.<br/>
+      Scale Faster.
+    </h1>
 
-  <!-- SERVICES -->
-  <section class="container">
-    <h2 style="text-align:center;">Our Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <h3>Workflow Automation</h3>
-        <p>Build custom automated workflows with no coding needed.</p>
-      </div>
-      <div class="service-card">
-        <h3>API Integrations</h3>
-        <p>Connect your apps together seamlessly.</p>
-      </div>
-      <div class="service-card">
-        <h3>CRM Automation</h3>
-        <p>Automate follow-ups, contacts & sales pipelines.</p>
-      </div>
-      <div class="service-card">
-        <h3>Custom Tools</h3>
-        <p>Tailored automation tools built for your business.</p>
-      </div>
-    </div>
+    <p>
+      I design custom automation systems, workflows, and integrations that
+      eliminate manual work and help businesses scale with clarity and speed.
+    </p>
+
+    <a href="#audit" class="btn">Book a Free Automation Audit</a>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about">
-    <div class="container">
-      <h2>About Antony Automations</h2>
-      <p>
-        We help businesses streamline their processes, reduce manual work,
-        and unlock growth through automation.
-      </p>
-    </div>
+  <div class="divider"></div>
+
+  <!-- WHAT I BUILD -->
+  <section>
+    <h2>What I Build</h2>
+
+    <h3>AI Processing</h3>
+    <p>
+      AI-driven decision logic that classifies data, triggers actions, and routes
+      information automatically across systems.
+    </p>
+
+    <h3>System Integrations</h3>
+    <p>
+      Reliable integrations between CRMs, forms, email tools, databases, and
+      internal platforms to keep workflows synchronized.
+    </p>
+
+    <h3>Workflow Automation</h3>
+    <p>
+      End-to-end automation pipelines that replace repetitive tasks and ensure
+      consistent execution across business operations.
+    </p>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="container">
-    <h2>Contact Us</h2>
-    <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
-      <div>
-        <label>Name</label><br>
-        <input type="text" required placeholder="Your Name" name="name">
-      </div>
-      <div>
-        <label>Email</label><br>
-        <input type="email" required placeholder="Your Email" name="email">
-      </div>
-      <div>
-        <label>Message</label><br>
-        <textarea required rows="4" placeholder="How can we help?" name="message"></textarea>
-      </div>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
+  <div class="divider"></div>
+
+  <!-- WHO I WORK WITH -->
+  <section>
+    <h2>Who I Work With</h2>
+
+    <ul>
+      <li>Founders overwhelmed by manual operations</li>
+      <li>Teams struggling with broken workflows or tool overload</li>
+      <li>Businesses ready to scale without hiring more people</li>
+    </ul>
   </section>
 
-  <!-- FOOTER -->
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <h2>How It Works</h2>
+
+    <h3>1. Audit</h3>
+    <p>
+      We review your current workflows, tools, and bottlenecks.
+    </p>
+
+    <h3>2. Design</h3>
+    <p>
+      I design a custom automation blueprint tailored to your operations.
+    </p>
+
+    <h3>3. Build & Deploy</h3>
+    <p>
+      Automations are implemented, tested, and documented for reliability.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section id="audit">
+    <h2>Get Your Free Automation Audit</h2>
+
+    <p>
+      Answer a few questions and discover where your business is leaking time
+      and money.
+    </p>
+
+    <a href="#" class="btn">Start Free Audit</a>
+  </section>
+
   <footer>
-    © 2025 Antony Automations — All rights reserved.
+    Antony Automations — Custom automation systems • Built for real businesses
   </footer>
 
 </body>
