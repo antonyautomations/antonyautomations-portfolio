@@ -246,10 +246,15 @@
       <p style="color:var(--muted);margin-bottom:25px;">
         Share a few details. I’ll personally review it and get back to you.
       </p>
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
+
 
       <!-- 🔴 REPLACE ACTION LINK WITH YOUR GOOGLE FORM ACTION -->
-      <form action="https://docs.google.com/forms/d/e/1FAIpQLSf0DoHT4iarNMthNABSMiTkTDBCPbx6ID9uQJXN24kqCphVlg/formResponse
-" method="POST" target="_blank">
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSf0DoHT4iarNMthNABSMiTkTDBCPbx6ID9uQJXN24kqCphVlg/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="showThankYou();">
+
         <input type="text"
        name="entry.1766895837"
        placeholder="Your Name"
@@ -270,6 +275,12 @@
 
         <button type="submit">Submit Request</button>
       </form>
+
+      <div id="thank-you-message" style="display:none; margin-top:20px; color:#d6c08d;">
+  <h3>Thank you.</h3>
+  <p>Your request has been received. I’ll personally review it and get back to you shortly.</p>
+</div>
+
     </div>
   </section>
 
@@ -277,7 +288,15 @@
     © Antony Automations · Built for real automations
   </footer>
 
+  <script>
+  function showThankYou() {
+    document.querySelector("form").style.display = "none";
+    document.getElementById("thank-you-message").style.display = "block";
+  }
+</script>
+
 </body>
 </html>
+
 
 
