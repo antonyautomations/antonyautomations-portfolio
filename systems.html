@@ -32,10 +32,18 @@
     }
 
     section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section-lg {
+  padding: 80px 20px;
+}
+
+.section-sm {
+  padding: 30px 20px;
+}
+
 
     /* HERO */
     .hero {
@@ -196,7 +204,8 @@
 </nav>
   
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero section-lg">
+
     <div>
     <h1>
       Automation Systems<br/>
@@ -211,7 +220,8 @@
   </section>
 
   <!-- WHAT I AUTOMATE -->
-  <section>
+  <section class="section-lg">
+
     <h2 style="color:var(--gold); margin-bottom:30px;">
     Automation Services We Build
   </h2>
@@ -373,23 +383,23 @@
   </section>
 
   <!-- Read My Automation Journal -->
-  <section>
-    
-    <p style="text-align:center; font-size:0.9rem; color:#9a9a9a; margin-bottom:18px;">
+ <section class="section-sm">
+  <p style="text-align:center; font-size:0.9rem; color:#9a9a9a; margin-bottom:18px;">
     This automation journal documents real workflows, systems, and learning notes built while solving business problems.
   </p>
 
-  <div style="text-align:center; margin-top:20px;">
+  <div style="text-align:center;">
     <a 
       href="https://www.notion.so/Automation-Journey-2ddb465540dc806181e6c7895f325b68?source=copy_link"
       target="_blank"
       class="cta-btn"
     >
-       My Automation Journal
+      My Automation Journal
     </a>
   </div>
+</section>
 
-  <section style="padding:0;">
+
 
 
 
