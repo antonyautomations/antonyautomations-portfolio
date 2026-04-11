@@ -238,12 +238,36 @@
 
   <!-- HOW IT WORKS -->
   <section>
-    <h2 style="color:var(--gold);margin-bottom:20px;">How It Works</h2>
-    <div class="steps">
-      <div class="step">1. You explain your business process</div>
-      <div class="step">2. I design & build the automation</div>
-      <div class="step">3. You test it and start using it</div>
-    </div>
+    <h2 style="color:var(--gold);margin-bottom:20px;"
+    .system-heading {
+  display: inline-block;
+  color: var(--gold);
+  position: relative;
+  transition: 0.4s ease;
+}
+* subtle glow *
+.system-heading:hover {
+  text-shadow: 0 0 12px rgba(214,192,141,0.6);
+}
+
+* animated underline *
+.system-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+.system-heading:hover::after {
+  width: 100%;
+}
+      <h2 class="system-heading">
+  Core Systems We Build
+</h2>
   </section>
 
   <!-- CONTACT -->
