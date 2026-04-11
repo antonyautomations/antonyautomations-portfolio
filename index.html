@@ -31,27 +31,30 @@
       line-height: 1.6;
     }
 
-    section {
-      padding: 30px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+   section {
+  padding: 50px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.hero {
+  padding: 100px 20px;
+}
 
     .hero {
-      padding: 100px 20px;
-      min-height: 75vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
 
     .hero p {
       max-width: 600px;
@@ -90,6 +93,23 @@
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.05);
       box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      box-shadow: 0 0 30px var(--glow);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .icon {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 12px;
     }
 
     .card h3 {
@@ -103,31 +123,16 @@
       font-size: 0.95rem;
     }
 
-    /* ✅ SYSTEM HEADING */
-    .system-heading {
-      display: inline-block;
-      color: var(--gold);
-      position: relative;
-      transition: 0.4s ease;
+    .steps {
+      display: grid;
+      gap: 20px;
+      max-width: 600px;
     }
 
-    .system-heading:hover {
-      text-shadow: 0 0 12px rgba(214,192,141,0.6);
-    }
-
-    .system-heading::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 1px;
-      background: var(--gold);
-      transition: width 0.4s ease;
-    }
-
-    .system-heading:hover::after {
-      width: 100%;
+    .step {
+      background: var(--card);
+      padding: 18px 22px;
+      border-left: 3px solid var(--gold);
     }
 
     .form-box {
@@ -148,6 +153,12 @@
       padding: 14px;
       color: var(--text);
       border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
     button {
@@ -155,8 +166,16 @@
       background: transparent;
       color: var(--gold);
       border: 1px solid var(--gold);
-      border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 0 25px var(--glow);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--gold);
+      color: #000;
     }
 
     footer {
@@ -170,6 +189,11 @@
 
 <body>
 
+<nav style="padding:20px; text-align:center;">
+  <a href="index.html" style="margin-right:20px; color:#d6c08d; text-decoration:none;">Home</a>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
   <div>
     <h1>
@@ -185,29 +209,32 @@
   </div>
 </section>
 
-<!-- EXISTING CARDS -->
+<!-- FEATURES -->
 <section>
   <div class="features">
     <div class="card">
+      <div class="icon">⏱</div>
       <h3>Save Hours Every Week</h3>
       <p>Automate repetitive manual tasks and free up time for high-value work.</p>
     </div>
 
     <div class="card">
+      <div class="icon">🔗</div>
       <h3>Connect Your Tools</h3>
       <p>Integrate CRMs, email, WhatsApp, and apps into unified workflows.</p>
     </div>
 
     <div class="card">
-      <h3>Build With Systems</h3>
+      <div class="icon">📈</div>
+      <h3>Grow With Systems</h3>
       <p>Lead capture, invoice reminders, re-engagement, and upsell automations.</p>
     </div>
   </div>
 </section>
 
-<!-- ✅ NEW SYSTEMS SECTION -->
+<!-- ✅ CORE SYSTEMS -->
 <section>
-  <h2 class="system-heading" style="margin-bottom:30px;">
+  <h2 style="color:var(--gold);margin-bottom:30px;">
     Core Systems We Build
   </h2>
 
@@ -215,27 +242,27 @@
 
     <div class="card">
       <h3>Speed to Lead</h3>
-      <p>Instant response systems that reply to every new lead within seconds, increasing conversion and eliminating missed opportunities.</p>
+      <p>We respond to every new lead within seconds, increasing conversions and eliminating missed opportunities.</p>
     </div>
 
     <div class="card">
       <h3>Document Processing</h3>
-      <p>Automatically extract and structure data from invoices, forms, and PDFs—eliminating manual entry and errors.</p>
+      <p>Extract and structure data from invoices, forms, and PDFs automatically with zero manual work.</p>
     </div>
 
     <div class="card">
       <h3>Follow-Up Sequence</h3>
-      <p>Automated follow-ups that nurture leads over time, increasing replies and conversions without manual effort.</p>
+      <p>Automated follow-ups nurture leads over time, increasing replies and conversions effortlessly.</p>
     </div>
 
     <div class="card">
       <h3>Database Reactivation</h3>
-      <p>Re-engage old leads and past customers with targeted outreach to unlock hidden revenue from your existing database.</p>
+      <p>Re-engage old leads and past customers to unlock hidden revenue from your existing database.</p>
     </div>
 
     <div class="card">
       <h3>Internal Reporting</h3>
-      <p>Automated reports and insights delivered to your team, giving real-time visibility without manual tracking.</p>
+      <p>Automated reports give real-time visibility without manual tracking or dashboards.</p>
     </div>
 
   </div>
@@ -243,21 +270,54 @@
   <p style="margin-top:30px; color:#9a9a9a;">
     We build systems that eliminate manual work, increase revenue, and ensure your business runs faster, smarter, and more efficiently — on autopilot.
   </p>
-
 </section>
 
-<!-- CONTACT (UNCHANGED) -->
+<!-- CONTACT (UNCHANGED FULL FORM) -->
 <section id="contact">
   <div class="form-box">
     <h2 style="color:var(--gold);margin-bottom:10px;">
       Book Your Free Automation Call
     </h2>
+    <p style="color:var(--muted);margin-bottom:25px;">
+      Share a few details. I’ll personally review it and get back to you.
+    </p>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <p style="font-size:0.85rem; color:#9a9a9a; margin-bottom:15px;">
+      This form securely submits your details to Google Forms.
+    </p>
+
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSf0DoHT4iarNMthNABSMiTkTDBCPbx6ID9uQJXN24kqCphVlg/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="showThankYou();">
+
+      <input type="text" name="entry.1766895837" placeholder="Your Name" required />
+      <input type="email" name="entry.1648136847" placeholder="Email Address" required />
+      <input type="text" name="entry.535906040" placeholder="Business Name" required />
+      <textarea name="entry.1813669340" placeholder="What would you like to automate?"></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+
+    <div id="thank-you-message" style="display:none; margin-top:20px; color:#d6c08d;">
+      <h3>Thank you.</h3>
+      <p>Your request has been received. I’ll get back to you shortly.</p>
+    </div>
   </div>
 </section>
 
 <footer>
   <p>© 2026 Antony Automations</p>
 </footer>
+
+<script>
+function showThankYou() {
+  document.querySelector("form").style.display = "none";
+  document.getElementById("thank-you-message").style.display = "block";
+}
+</script>
 
 </body>
 </html>
