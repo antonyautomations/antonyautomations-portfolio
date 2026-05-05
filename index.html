@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Antony Automations</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Hero Exact</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0c;
-      --card: #141416;
       --gold: #d6c08d;
       --text: #e6e6e6;
       --muted: #9a9a9a;
@@ -31,7 +29,7 @@
       line-height: 1.6;
     }
 
-   section {
+    section {
       padding: 50px 20px;
       max-width: 1000px;
       margin: auto;
@@ -79,133 +77,511 @@
     }
 
     .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 30px;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 30px;
+}
 
-    .card {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      position: relative;
-    }
+.card {
+  background: #141416;
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
 
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      box-shadow: 0 0 30px var(--glow);
-      opacity: 0.15;
-      pointer-events: none;
-    }
+/* 🔥 CORE SYSTEM CARDS (STRONG VERSION) */
+.system-card {
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-    .icon {
-      font-size: 28px;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
+.system-card {
+  cursor: pointer;
+  transition: all 0.35s ease;
+  transform-style: preserve-3d;
+}
 
-    .card h3 {
-      color: var(--gold);
-      margin-bottom: 10px;
-      font-size: 1.4rem;
-    }
+/* 💥 PREMIUM HOVER */
+.system-card:hover {
+  transform: translateY(-10px) scale(1.03) rotateX(5deg);
+  border: 1px solid rgba(214,192,141,0.9);
+  box-shadow:
+    0 0 40px rgba(214,192,141,0.25),
+    0 20px 60px rgba(0,0,0,0.7);
+}
 
-    .card p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+.card {
+  background: #141416;
+  padding: 36px; /* slightly increased */
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  transition: 0.3s ease;
+}
 
-    /* ✅ ADD THIS (YOUR GLOW HEADING) */
-    .system-heading {
-      display: inline-block;
-      color: var(--gold);
-      position: relative;
-      padding: 10px 18px;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      transition: 0.3s ease;
-    }
+/* ✨ HOVER EFFECT */
+.card:hover {
+  border: 1px solid rgba(214,192,141,0.4); /* soft gold */
+  box-shadow: 0 0 20px rgba(214,192,141,0.15);
+  transform: translateY(-4px); /* slight lift = premium feel */
+}
 
-    .system-heading:hover {
-      border: 1px solid var(--gold);
-      box-shadow: 0 0 20px var(--glow);
-      background: rgba(214,192,141,0.05);
-    }
+.card {
+  min-height: 220px;
+}
 
-    .steps {
-      display: grid;
-      gap: 20px;
-      max-width: 600px;
-    }
+.icon {
+  margin-bottom: 12px;
+}
 
-    .step {
-      background: var(--card);
-      padding: 18px 22px;
-      border-left: 3px solid var(--gold);
-    }
+.card h3 {
+  color: #d6c08d;
+  margin-bottom: 10px;
+}
 
-    .form-box {
-      background: var(--card);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
-    }
+.card h3 {
+  position: relative;
+  display: inline-block;
+}
 
-    form {
-      display: grid;
-      gap: 18px;
-    }
+/* ✨ underline hidden */
+.card h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #d6c08d;
+  transition: width 0.3s ease;
+}
 
-    input, textarea {
-      background: #0e0e10;
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 14px;
-      color: var(--text);
-      border-radius: 6px;
-      font-size: 0.95rem;
-    }
+/* ✨ underline appears */
+.system-card:hover h3::after {
+  width: 100%;
+}
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
+.card p {
+  color: #9a9a9a;
+}
 
-    button {
-      padding: 14px;
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 6px;
-      box-shadow: 0 0 25px var(--glow);
-      transition: 0.3s;
-    }
+.core-heading {
+  color: #d6c08d;
+  margin-bottom: 30px;
+  display: inline-block;
 
-    button:hover {
-      background: var(--gold);
-      color: #000;
-    }
+  padding: 10px 20px;
+  border: 1px solid rgba(214,192,141,0.6);
+  border-radius: 6px;
 
-    footer {
-      text-align: center;
-      padding: 40px 10px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
+  background: rgba(214,192,141,0.03);
+}
+
+.core-heading {
+  box-shadow: 0 0 15px rgba(214,192,141,0.15);
+}
+
+
+/* 🔥 3D MINI BUTTON INSIDE CARD */
+.cube-btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 40px;
+  position: relative;
+
+  transform-style: preserve-3d;
+  transform: perspective(800px) rotateX(0deg);
+
+  transition: transform 0.6s ease; /* ⚡ FAST AGAIN */
+
+  /* ❌ REMOVE overflow hidden (IMPORTANT) */
+}
+
+/* rotate when card hovered */
+.system-card:hover .cube-btn {
+  transform: perspective(800px) rotateX(360deg);
+}
+
+.cube-btn span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d6c08d;
+  color: #000;
+
+  border: 1px solid #0b0b0c;
+
+  font-family: 'Inter', sans-serif;   /* 🔥 NEW FONT */
+
+  font-size: 13px;
+  font-weight: 700;                  /* balanced bold */
+  letter-spacing: 0.5px;             /* 🔥 tighter (key fix) */
+  text-transform: uppercase;
+
+  border-radius: 2px;
+  outline: 1px solid rgba(0,0,0,0.7);
+
+  line-height: 1;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.1),
+    0 3px 8px rgba(0,0,0,0.5);       /* 🔥 stronger depth */
+
+  text-shadow: 0 1px 0 rgba(255,255,255,0.25); /* 🔥 crisp text */
+
+  backface-visibility: hidden;
+}
+
+/* cube faces */
+.cube-btn span:nth-child(1) {
+  transform: rotateX(0deg) translateZ(20px);
+}
+.cube-btn span:nth-child(2) {
+  transform: rotateX(90deg) translateZ(20px);
+}
+.cube-btn span:nth-child(3) {
+  transform: rotateX(180deg) translateZ(20px);
+}
+.cube-btn span:nth-child(4) {
+  transform: rotateX(270deg) translateZ(20px);
+}
+
+/* ===== BIG CARD SECTION ===== */
+
+.big-card {
+  display: block;
+  text-decoration: none;
+
+  margin-top: 70px;
+  padding: 60px 50px;
+
+  background: linear-gradient(145deg, #141416, #0c0c0d);
+  border: 1px solid rgba(214,192,141,0.25);
+
+  border-radius: 14px;
+
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* glow */
+.big-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(214,192,141,0.08), transparent 70%);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.big-card:hover::before {
+  opacity: 1;
+}
+
+.big-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border: 1px solid rgba(214,192,141,0.6);
+  box-shadow:
+    0 0 40px rgba(214,192,141,0.15),
+    0 20px 60px rgba(0,0,0,0.7);
+}
+
+.big-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(214,192,141,0.6);
+}
+
+.big-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #d6c08d;
+
+  margin: 12px 0 20px 0;
+}
+
+.big-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #d6c08d;
+  letter-spacing: 0.5px;
+
+  transition: 0.25s ease;
+}
+
+.big-card:hover .big-cta {
+  transform: translateX(6px);
+}
+
+/* ===== ANIMATED PREMIUM BORDER ===== */
+
+.big-card {
+  display: block;
+  text-decoration: none;
+
+  margin-top: 70px;
+  padding: 60px 50px;
+
+  background: linear-gradient(145deg, #141416, #0c0c0d);
+  border-radius: 14px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.35s ease;
+}
+
+/* hover base */
+.big-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 0 40px rgba(214,192,141,0.15),
+    0 20px 60px rgba(0,0,0,0.7);
+}
+
+/* 🔥 GOLD LINES (not neon) */
+.line {
+  position: absolute;
+  display: block;
+}
+
+/* top */
+.l1 {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #d6c08d);
+  animation: line1 2.2s linear infinite;
+}
+
+/* right */
+.l2 {
+  top: -100%;
+  right: 0;
+  width: 1.5px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #d6c08d);
+  animation: line2 2.2s linear infinite;
+  animation-delay: 0.5s;
+}
+
+/* bottom */
+.l3 {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(270deg, transparent, #d6c08d);
+  animation: line3 2.2s linear infinite;
+  animation-delay: 1s;
+}
+
+/* left */
+.l4 {
+  bottom: -100%;
+  left: 0;
+  width: 1.5px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #d6c08d);
+  animation: line4 2.2s linear infinite;
+  animation-delay: 1.5s;
+}
+
+/* animations */
+@keyframes line1 {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+@keyframes line2 {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+@keyframes line3 {
+  0% { right: -100%; }
+  100% { right: 100%; }
+}
+@keyframes line4 {
+  0% { bottom: -100%; }
+  100% { bottom: 100%; }
+}
+
+/* content styles (UPDATED PREMIUM BALANCE) */
+
+.big-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;                /* 🔥 bigger */
+  font-weight: 700;               /* 🔥 stronger */
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: rgba(214,192,141,0.85); /* 🔥 brighter */
+}
+
+.big-card h2 {
+  font-family: 'Playfair Display', serif;
+
+  font-size: 1.8rem;              /* 🔥 reduced */
+  line-height: 1.3;               /* 🔥 tighter */
+
+  color: #d6c08d;
+
+  margin: 8px 0 0 0;              /* 🔥 less gap */
+  max-width: 520px;               /* 🔥 premium width control */
+}
+
+.big-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #d6c08d;
+  transition: 0.25s ease;
+}
+
+.big-card:hover .big-cta {
+  transform: translateX(6px);
+}
+
+/* 🔥 FORM UI UPGRADE */
+input, textarea {
+  background: #0e0e10;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 16px;
+  color: #e6e6e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid #d6c08d;
+  box-shadow: 0 0 10px rgba(214,192,141,0.3);
+}
+
+textarea {
+  min-height: 140px;
+}
+
+button {
+  padding: 16px;
+  background: transparent;
+  color: #d6c08d;
+  border: 1px solid #d6c08d;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(214,192,141,0.2);
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #d6c08d;
+  color: #000;
+}
+
+.contact-cards {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-card {
+  background: linear-gradient(145deg, #141416, #0c0c0d);
+  padding: 32px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(214,192,141,0.25);
+  transition: 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border: 1px solid rgba(214,192,141,0.6);
+  box-shadow:
+    0 0 25px rgba(214,192,141,0.15),
+    0 10px 30px rgba(0,0,0,0.6);
+}
+
+.contact-card h4 {
+  color: #d6c08d;
+  margin-bottom: 10px;
+}
+
+.contact-card p {
+  color: #9a9a9a;
+  margin-bottom: 15px;
+}
+
+.contact-card a {
+  color: #d6c08d;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-card {
+  text-decoration: none;   /* remove underline */
+  color: inherit;          /* use your gold/text colors */
+}
+
+/* remove visited purple */
+.contact-card:visited {
+  color: inherit;
+}
+
+/* optional: keep hover clean */
+.contact-card:hover {
+  text-decoration: none;
+}
+
+.contact-card {
+  text-decoration: none;   /* remove underline */
+  color: inherit;          /* use your gold/text colors */
+}
+
+/* remove visited purple */
+.contact-card:visited {
+  color: inherit;
+}
+
+/* optional: keep hover clean */
+.contact-card:hover {
+  text-decoration: none;
+}
+
+.contact-card span {
+  color: #d6c08d;
+  font-weight: 700;
+}
+
+
   </style>
 </head>
 
 <body>
-
-<nav style="padding:20px; text-align:center;">
-  <a href="index.html" style="margin-right:20px; color:#d6c08d; text-decoration:none;">Home</a>
-</nav>
 
 <section class="hero">
   <div>
@@ -224,107 +600,320 @@
 
 <section>
   <div class="features">
+
     <div class="card">
-      <div class="icon">⏱</div>
+      <div class="icon">
+        <svg width="28" height="28" fill="none" stroke="#d6c08d" stroke-width="1.5" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 6v6l4 2"></path>
+        </svg>
+      </div>
       <h3>Save Hours Every Week</h3>
       <p>Automate repetitive manual tasks and free up time for high-value work.</p>
     </div>
 
     <div class="card">
-      <div class="icon">🔗</div>
+      <div class="icon">
+        <svg width="28" height="28" fill="none" stroke="#d6c08d" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"></path>
+          <path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"></path>
+        </svg>
+      </div>
       <h3>Connect Your Tools</h3>
       <p>Integrate CRMs, email, WhatsApp, and apps into unified workflows.</p>
     </div>
 
     <div class="card">
-      <div class="icon">📈</div>
+      <div class="icon">
+        <svg width="28" height="28" fill="none" stroke="#d6c08d" stroke-width="1.5" viewBox="0 0 24 24">
+          <path d="M3 17l6-6 4 4 7-7"></path>
+          <path d="M14 5h7v7"></path>
+        </svg>
+      </div>
       <h3>Grow With Systems</h3>
       <p>Lead capture, invoice reminders, re-engagement, and upsell automations.</p>
     </div>
+
   </div>
 </section>
 
-<!-- ✅ NOW GLOW WORKS HERE -->
 <section>
-  <h2 class="system-heading" style="margin-bottom:30px;">
-    Core Systems We Build
-  </h2>
+  <h2 class="core-heading">
+  Core Systems We Build
+</h2>
 
   <div class="features">
-    <div class="card">
+
+    <div class="card system-card" onclick="openModal()">
       <h3>Speed to Lead</h3>
       <p>We respond to every new lead within seconds, increasing conversions and eliminating missed opportunities.</p>
-    </div>
 
-    <div class="card">
-      <h3>Document Processing</h3>
-      <p>Extract and structure data from invoices, forms, and PDFs automatically with zero manual work.</p>
-    </div>
-
-    <div class="card">
-      <h3>Follow-Up Sequence</h3>
-      <p>Automated follow-ups nurture leads over time, increasing replies and conversions effortlessly.</p>
-    </div>
-
-    <div class="card">
-      <h3>Database Reactivation</h3>
-      <p>Re-engage old leads and past customers to unlock hidden revenue from your existing database.</p>
-    </div>
-
-    <div class="card">
-      <h3>Internal Reporting</h3>
-      <p>Automated reports give real-time visibility without manual tracking or dashboards.</p>
-    </div>
+      <!-- ✅ ADD THIS LINE -->
+  <div class="cube-btn">
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
   </div>
 
-  <p style="margin-top:30px; color:#9a9a9a;">
-    We build systems that eliminate manual work, increase revenue, and ensure your business runs faster, smarter, and more efficiently — on autopilot.
-  </p>
+    </div>
+
+    <div class="card system-card" onclick="openModal()">
+      <h3>Document Processing</h3>
+      <p>Extract and structure data from invoices, forms, and PDFs automatically with zero manual work.</p>
+
+      <!-- ✅ ADD THIS LINE -->
+  <div class="cube-btn">
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+  </div>
+
+    </div>
+
+    <div class="card system-card" onclick="openModal()">
+      <h3>Follow-Up Sequence</h3>
+      <p>Automated follow-ups nurture leads over time, increasing replies and conversions effortlessly.</p>
+
+      <!-- ✅ ADD THIS LINE -->
+  <div class="cube-btn">
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+  </div>
+
+    </div>
+
+    <div class="card system-card" onclick="openModal()">
+      <h3>Database Reactivation</h3>
+      <p>Re-engage old leads and past customers to unlock hidden revenue from your existing database.</p>
+
+      <!-- ✅ ADD THIS LINE -->
+  <div class="cube-btn">
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+  </div>
+
+    </div>
+
+    <div class="card system-card" onclick="openModal()">
+      <h3>Internal Reporting</h3>
+      <p>Automated reports give real-time visibility without manual tracking or dashboards.</p>
+
+      <!-- ✅ ADD THIS LINE -->
+  <div class="cube-btn">
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+    <span>VIEW SYSTEM</span>
+  </div>
+
+    </div>
+
+  </div>
 </section>
 
-<!-- CONTACT (UNCHANGED) -->
+<!-- 🔥 NEW LARGE CARD SECTION (ADD HERE) -->
+<section>
+  <a href="YOUR_NOTION_LINK" target="_blank" class="big-card">
+
+    <!-- animated borders -->
+    <span class="line l1"></span>
+    <span class="line l2"></span>
+    <span class="line l3"></span>
+    <span class="line l4"></span>
+
+    <span class="big-label">AUTOMATION JOURNEY</span>
+
+    <h2>From simple workflows to advanced systems — everything I’ve built.</h2>
+
+    
+
+  </a>
+</section>
+
+<!-- 🔥 CONTACT FORM SECTION -->
 <section id="contact">
-  <div class="form-box">
-    <h2 style="color:var(--gold);margin-bottom:10px;">
+  <div style="
+  background:#141416;
+  padding:40px;
+  border-radius:16px;
+
+  width:100%;          /* 🔥 take full section width */
+  max-width:100%;      /* 🔥 remove artificial limit */
+
+  box-shadow:0 0 40px rgba(0,0,0,0.8);
+">
+
+  <!-- 🔥 ADD THIS WRAPPER -->
+  <div id="form-container">
+
+    <h2 style="color:#d6c08d; margin-bottom:10px;">
       Book Your Free Automation Call
     </h2>
 
-    <p style="color:var(--muted);margin-bottom:25px;">
+    <p style="color:#9a9a9a; margin-bottom:25px;">
       Share a few details. I’ll personally review it and get back to you.
     </p>
 
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
+    <form onsubmit="sendToGoogleForm(event)" style="display:grid; gap:22px;">
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSf0DoHT4iarNMthNABSMiTkTDBCPbx6ID9uQJXN24kqCphVlg/formResponse"
-      method="POST"
-      target="hidden_iframe"
-      onsubmit="showThankYou();">
-
-      <input type="text" name="entry.1766895837" placeholder="Your Name" required />
-      <input type="email" name="entry.1648136847" placeholder="Email Address" required />
-      <input type="text" name="entry.535906040" placeholder="Business Name" required />
-      <textarea name="entry.1813669340" placeholder="What would you like to automate?"></textarea>
+      <input id="name" type="text" placeholder="Your Name" required />
+      
+      <input id="email" type="email" placeholder="Email Address" required />
+      
+      <input id="linkedin" type="text" placeholder="LinkedIn Profile" required />
+      
+      <input id="business" type="text" placeholder="Business Name" required />
+      
+      <textarea id="automation" placeholder="What would you like to automate?"></textarea>
 
       <button type="submit">Submit Request</button>
+
     </form>
 
-    <div id="thank-you-message" style="display:none; margin-top:20px; color:#d6c08d;">
-      <h3>Thank you.</h3>
-      <p>Your request has been received. I’ll get back to you shortly.</p>
     </div>
+
+    <div id="thank-you-message" style="display:none; margin-top:20px; color:#d6c08d;">
+
+  <h3>Thank you.</h3>
+  <p>Your request has been received. I’ll get back to you shortly.</p>
+
+</div>
+
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Antony Automations</p>
-</footer>
+<!-- 🔥 PERMANENT CONTACT BLOCK -->
+<section>
+  <div class="contact-cards">
+
+    <!-- EMAIL -->
+    <div class="contact-card">
+      <h4>Email Me Directly</h4>
+      <p>Prefer direct communication? Reach me anytime.</p>
+      <a href="mailto:youremail@gmail.com">systems@antonyautomations.com→</a>
+    </div>
+
+    <!-- LINKEDIN -->
+    <a href="https://www.linkedin.com/in/antony-nathan-automations" target="_blank" class="contact-card">
+      <h4>Connect on LinkedIn</h4>
+      <p>See my work, systems, and network.</p>
+      <span class="cta-text">View Profile →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- 🔥 MODAL POPUP -->
+<div id="modal" style="
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+">
+
+  <div style="
+    background:#141416;
+    padding:40px;
+    border-radius:12px;
+    max-width:500px;
+    width:90%;
+    text-align:center;
+    border:1px solid rgba(214,192,141,0.4);
+    box-shadow:0 0 60px rgba(214,192,141,0.2);
+  ">
+    <h2 style="color:#d6c08d;">Antony Automations</h2>
+    
+    <p style="color:#9a9a9a; margin-top:10px;">
+      This system will be explained here with visuals and workflow.
+    </p>
+
+    <button onclick="closeModal()" style="
+      margin-top:20px;
+      padding:10px 20px;
+      border:1px solid #d6c08d;
+      background:transparent;
+      color:#d6c08d;
+      border-radius:6px;
+      cursor:pointer;
+    ">
+      Close
+    </button>
+
+  </div>
+</div>
 
 <script>
-function showThankYou() {
-  document.querySelector("form").style.display = "none";
+function openModal() {
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+/* 🔥 GOOGLE FORM CONNECTION */
+function sendToGoogleForm(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const linkedin = document.getElementById("linkedin").value;
+  const business = document.getElementById("business").value;
+  const automation = document.getElementById("automation").value;
+
+  const url = "https://docs.google.com/forms/d/e/1FAIpQLSdb-MhN5Af6INq0_UfoU0NDuPmW0GGlKx4-MRHvyya3EH6AYQ/formResponse";
+
+  const formData = new FormData();
+  formData.append("entry.2069573671", name);
+  formData.append("entry.356222709", email);
+  formData.append("entry.1707768224", linkedin);
+  formData.append("entry.985668624", business);
+  formData.append("entry.530908230", automation);
+
+  fetch(url, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  });
+
+  document.getElementById("form-container").style.display = "none";
   document.getElementById("thank-you-message").style.display = "block";
 }
 </script>
+
+<footer style="
+  text-align:center;
+  margin-top:40px;
+  padding:20px;
+  color:#9a9a9a;
+  font-size:14px;
+">
+
+  © 2026 Antony Automations
+
+  <br><br>
+
+  <a href="privacy.html" style="
+    color:#d6c08d;
+    text-decoration:none;
+  ">
+    Privacy Policy
+  </a>
+
+</footer>
 
 </body>
 </html>
