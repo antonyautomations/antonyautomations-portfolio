@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Document Processing - Antony Automations</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+body {
+  background:#0b0b0c;
+  color:#e6e6e6;
+  font-family: Georgia, serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  line-height:1.7;
+}
+
+h1 {
+  color:#d6c08d;
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+
+h2 {
+  color:#d6c08d;
+  margin-top:30px;
+}
+
+p {
+  margin-bottom:15px;
+}
+
+img {
+  width:100%;
+  border-radius:12px;
+  margin:25px 0;
+}
+
+ul {
+  margin-left:20px;
+  margin-bottom:15px;
+}
+
+.cta {
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  border:1px solid #d6c08d;
+  color:#d6c08d;
+  text-decoration:none;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.cta:hover {
+  background:#d6c08d;
+  color:#000;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Document Processing System</h1>
+
+<p style="font-size:18px; color:#d6c08d;">
+Turn hours of manual paperwork into automated workflows.
+</p>
+
+<!-- ✅ YOUR IMAGE -->
+<img src="documentprocessingpermanent.png">
+
+<!-- PROBLEM -->
+<h2>The Problem</h2>
+
+<p>
+Many businesses waste hours every day manually processing documents like invoices,
+forms, and PDFs.
+</p>
+
+<p>
+Teams open files, extract data, and enter it into spreadsheets or software — repeatedly.
+</p>
+
+<ul>
+<li>Up to <strong>50+ hours/week</strong> spent on manual entry</li>
+<li><strong>5–15% human error rate</strong></li>
+<li>Slow processing delays operations</li>
+</ul>
+
+<p>
+This isn’t just inefficient — it’s expensive.
+</p>
+
+<!-- WHY IT MATTERS -->
+<h2>Why This Matters</h2>
+
+<p>
+Manual document processing is one of the biggest hidden cost leaks in businesses.
+</p>
+
+<p>
+You’re paying skilled employees to do repetitive, low-value work.
+</p>
+
+<p>
+This system eliminates that waste and turns document handling into a fast,
+reliable process.
+</p>
+
+<!-- SYSTEM -->
+<h2>How The System Works</h2>
+
+<ul>
+<li>Documents are received automatically (Email / Upload / WhatsApp)</li>
+<li>Data is extracted instantly (invoice details, dates, amounts, vendors)</li>
+<li>Information is structured and validated</li>
+<li>Rules check for errors or anomalies</li>
+<li>Data is sent directly to your system (Sheets / CRM / ERP)</li>
+<li>Only final human review is needed (optional)</li>
+</ul>
+
+<p>
+Processing time drops from <strong>15 minutes → ~2 minutes per document</strong>.
+</p>
+
+<!-- WHO IT'S FOR -->
+<h2>Who This Is For</h2>
+
+<ul>
+<li>Accounting & finance teams</li>
+<li>Law firms</li>
+<li>Insurance companies</li>
+<li>Logistics & operations teams</li>
+<li>Construction & procurement businesses</li>
+</ul>
+
+<p>
+Any business handling large volumes of documents benefits immediately.
+</p>
+
+<!-- ROI -->
+<h2>Business Impact</h2>
+
+<ul>
+<li>Save <strong>40–50+ hours/week</strong></li>
+<li>Reduce costly human errors</li>
+<li>Faster processing → faster decisions</li>
+<li>Scalable operations without hiring more staff</li>
+</ul>
+
+<p>
+Example: Automating document workflows can save over
+<strong>$50,000–$70,000/year</strong> in labor costs.
+</p>
+
+<!-- CTA -->
+<a href="index.html#contact" class="cta">
+Book This System →
+</a>
+
+</body>
+</html>
