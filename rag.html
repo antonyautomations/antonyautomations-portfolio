@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Knowledge Assistant - Antony Automations</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+body {
+  background:#0b0b0c;
+  color:#e6e6e6;
+  font-family:"Times New Roman", serif;
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  line-height:1.7;
+}
+
+h1 {
+  color:#d6c08d;
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+
+h2 {
+  color:#d6c08d;
+  margin-top:30px;
+}
+
+p {
+  margin-bottom:15px;
+}
+
+img {
+  width:100%;
+  border-radius:12px;
+  margin:25px 0;
+}
+
+ul {
+  margin-left:20px;
+  margin-bottom:15px;
+}
+
+.cta {
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 20px;
+  border:1px solid #d6c08d;
+  color:#d6c08d;
+  text-decoration:none;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.cta:hover {
+  background:#d6c08d;
+  color:#000;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<h1>AI-Powered WhatsApp Knowledge Assistant</h1>
+
+<p style="font-size:18px; color:#d6c08d;">
+Give customers instant answers using your company’s own knowledge base.
+</p>
+
+
+<!-- WORKFLOW IMAGE -->
+
+<img src="./whatsappassistantrag.png"
+     alt="AI-Powered WhatsApp RAG Knowledge Assistant Workflow">
+
+
+<!-- PROBLEM -->
+
+<h2>The Problem</h2>
+
+<p>
+Customers often ask questions that require information from company documents,
+FAQs, policies, service guides, or internal knowledge bases.
+</p>
+
+<ul>
+<li>Information is scattered across documents</li>
+<li>Employees repeatedly answer the same questions</li>
+<li>Customers have to wait for simple answers</li>
+<li>Generic AI cannot reliably use company-specific information</li>
+</ul>
+
+<p>
+The challenge is not simply generating an answer — it is finding the
+right information first.
+</p>
+
+
+<!-- WHY IT MATTERS -->
+
+<h2>Why This Matters</h2>
+
+<p>
+An AI assistant becomes much more useful when it can work with the
+company’s own knowledge instead of relying only on its general training.
+</p>
+
+<p>
+This system connects a WhatsApp conversation to a searchable company
+knowledge base and retrieves relevant information before generating the response.
+</p>
+
+
+<!-- SYSTEM -->
+
+<h2>How The System Works</h2>
+
+<ul>
+
+<li>Company documents are collected from Google Drive</li>
+
+<li>Documents are processed and divided into searchable chunks</li>
+
+<li>Chunks are converted into embeddings and stored in a Supabase vector database</li>
+
+<li>Metadata filters help narrow retrieval to the relevant knowledge category</li>
+
+<li>Relevant results are retrieved from the knowledge base</li>
+
+<li>A reranker improves the relevance of the retrieved information</li>
+
+<li>The AI Agent uses the retrieved knowledge to generate a concise answer</li>
+
+<li>The final response is delivered directly through WhatsApp</li>
+
+</ul>
+
+
+<!-- RAG -->
+
+<h2>Retrieval-Augmented Generation</h2>
+
+<p>
+Instead of asking the AI to answer from general knowledge, the system
+first searches the company knowledge base for relevant information.
+</p>
+
+<p>
+The retrieved context is then provided to the AI Agent so the response
+can be grounded in the available company information.
+</p>
+
+
+<!-- USE CASES -->
+
+<h2>Use Cases</h2>
+
+<ul>
+
+<li>Customer FAQ assistants</li>
+
+<li>Service and product information</li>
+
+<li>Company policy questions</li>
+
+<li>Internal employee knowledge assistants</li>
+
+<li>Support documentation</li>
+
+<li>WhatsApp-based knowledge access</li>
+
+</ul>
+
+
+<!-- BUSINESS IMPACT -->
+
+<h2>Business Impact</h2>
+
+<ul>
+
+<li>Faster access to company information</li>
+
+<li>Less repetitive question answering</li>
+
+<li>Consistent responses based on the knowledge base</li>
+
+<li>24/7 access through WhatsApp</li>
+
+<li>Knowledge can be updated by updating the source documents</li>
+
+</ul>
+
+
+<p>
+The result is a practical AI knowledge layer that connects a company’s
+existing documents with a conversational interface.
+</p>
+
+
+<!-- CTA -->
+
+<a href="index.html#contact" class="cta">
+Get The System →
+</a>
+
+
+</body>
+</html>
