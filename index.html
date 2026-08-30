@@ -812,7 +812,7 @@ dashboards.</p>
       Share a few details. I’ll personally review it and get back to you.
     </p>
 
-    <form onsubmit="sendToGoogleForm(event)" style="display:grid; gap:22px;">
+    <form onsubmit="sendToN8NWebhook(event)" style="display:grid; gap:22px;">
 
       <input id="name" type="text" placeholder="Your Name" required />
       
@@ -972,8 +972,8 @@ function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-/* 🔥 GOOGLE FORM CONNECTION */
-function sendToGoogleForm(e) {
+/* 🔥 N8N WEBHOOK CONNECTION */
+function sendToN8NWebhook(e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
@@ -982,14 +982,15 @@ function sendToGoogleForm(e) {
   const business = document.getElementById("business").value;
   const automation = document.getElementById("automation").value;
 
-  const url = "https://docs.google.com/forms/d/e/1FAIpQLSdb-MhN5Af6INq0_UfoU0NDuPmW0GGlKx4-MRHvyya3EH6AYQ/formResponse";
+  const url = "https://systems.antonyautomations.com/webhook/speeed";
 
   const formData = new FormData();
-  formData.append("entry.2069573671", name);
-  formData.append("entry.356222709", email);
-  formData.append("entry.1707768224", linkedin);
-  formData.append("entry.985668624", business);
-  formData.append("entry.530908230", automation);
+
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("linkedin", linkedin);
+  formData.append("business", business);
+  formData.append("automation", automation);
 
   fetch(url, {
     method: "POST",
