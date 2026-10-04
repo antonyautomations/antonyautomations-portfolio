@@ -7,15 +7,30 @@
   <title>AI Dental Receptionist</title>
 
   <style>
+
+    /* =========================================================
+       COLORS
+       ========================================================= */
+
     :root {
-      --black: #080807;
+      --black: #070706;
       --black-soft: #11110f;
+
       --cream: #f3ead5;
       --cream-soft: #d8ccb2;
+
       --gold: #b99a5b;
+      --gold-light: #d2b875;
+
       --muted: #8f897b;
+
       --danger: #b95c5c;
     }
+
+
+    /* =========================================================
+       RESET
+       ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -23,730 +38,1449 @@
       padding: 0;
     }
 
+
+    /* =========================================================
+       BODY
+       ========================================================= */
+
     body {
+
       min-height: 100vh;
+
       background:
-        radial-gradient(circle at 50% 35%, #211f19 0%, var(--black) 48%);
+        radial-gradient(
+          circle at 50% 35%,
+          #242219 0%,
+          #11110f 28%,
+          var(--black) 65%
+        );
+
       color: var(--cream);
-      font-family: Inter, Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
+
+      font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      overflow-x: hidden;
     }
 
+
+    /* =========================================================
+       MAIN PAGE
+       ========================================================= */
+
     .page {
-      width: min(100%, 900px);
+
+      width: 100%;
       min-height: 100vh;
+
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 38px 24px 30px;
+
+      padding:
+        42px
+        28px
+        30px;
     }
 
-    /* ---------- HEADER ---------- */
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
 
     header {
+
       width: 100%;
+      max-width: 1200px;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
+
     .brand {
-      font-size: 14px;
-      letter-spacing: 3px;
-      font-weight: 600;
-    }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: inline-block;
-      margin-right: 8px;
-    }
-
-    .status {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    /* ---------- HERO ---------- */
-
-    .hero {
-      text-align: center;
-      margin-top: 70px;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: var(--gold);
-      margin-bottom: 15px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(40px, 7vw, 72px);
-      font-weight: 400;
-      line-height: 1;
-      letter-spacing: -2px;
-    }
-
-    .subtitle {
-      margin-top: 18px;
-      color: var(--cream-soft);
       font-size: 15px;
-      line-height: 1.6;
-    }
 
-    /* ---------- ROBOT ---------- */
+      font-weight: 600;
 
-    .robot-area {
-      margin-top: 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      letter-spacing: 4px;
 
-    .robot-button {
-      position: relative;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      border: 1px solid rgba(243, 234, 213, 0.25);
-      background:
-        radial-gradient(circle at 35% 25%, #3a372d, #171613 55%, #0b0b0a);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.35s ease;
-      box-shadow:
-        0 0 0 1px rgba(185,154,91,0.05),
-        0 25px 70px rgba(0,0,0,0.7);
-    }
-
-    .robot-button:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-      box-shadow:
-        0 0 45px rgba(185,154,91,0.14),
-        0 25px 70px rgba(0,0,0,0.7);
-    }
-
-    .robot {
-      width: 78px;
-      height: 65px;
-      background: var(--cream);
-      border-radius: 24px 24px 30px 30px;
-      position: relative;
-      box-shadow: 0 12px 35px rgba(243,234,213,0.12);
-    }
-
-    .robot::before {
-      content: "";
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      background: var(--black);
-      border-radius: 50%;
-      left: 20px;
-      top: 24px;
-      box-shadow: 29px 0 var(--black);
-    }
-
-    .robot::after {
-      content: "";
-      position: absolute;
-      width: 22px;
-      height: 3px;
-      background: var(--black);
-      border-radius: 10px;
-      left: 28px;
-      top: 43px;
-    }
-
-    .antenna {
-      position: absolute;
-      width: 3px;
-      height: 20px;
-      background: var(--cream);
-      top: -16px;
-      left: 38px;
-    }
-
-    .antenna::after {
-      content: "";
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      background: var(--gold);
-      border-radius: 50%;
-      top: -4px;
-      left: -2px;
-    }
-
-    /* ---------- STATES ---------- */
-
-    .robot-button.listening {
-      animation: pulse 1.5s infinite;
-      border-color: var(--gold);
-    }
-
-    .robot-button.speaking {
-      animation: speaking 0.8s infinite alternate;
-      border-color: var(--cream);
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow:
-          0 0 0 0 rgba(185,154,91,0.2),
-          0 25px 70px rgba(0,0,0,0.7);
-      }
-
-      50% {
-        box-shadow:
-          0 0 0 22px rgba(185,154,91,0),
-          0 0 55px rgba(185,154,91,0.22);
-      }
-    }
-
-    @keyframes speaking {
-      from {
-        transform: scale(1);
-      }
-
-      to {
-        transform: scale(1.035);
-      }
-    }
-
-    .state {
-      margin-top: 25px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    /* ---------- TRANSCRIPT ---------- */
-
-    .conversation {
-      width: min(100%, 650px);
-      margin-top: 45px;
-      max-height: 170px;
-      overflow-y: auto;
-      padding: 0 10px;
-      scrollbar-width: none;
-    }
-
-    .conversation::-webkit-scrollbar {
-      display: none;
-    }
-
-    .message {
-      margin-bottom: 14px;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .message .label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: var(--gold);
-      margin-bottom: 3px;
-      text-transform: uppercase;
-    }
-
-    .message.user {
-      color: var(--cream-soft);
-    }
-
-    .message.assistant {
       color: var(--cream);
     }
 
-    /* ---------- END CALL ---------- */
 
-    .end-call {
-      display: none;
-      margin-top: 25px;
-      border: 1px solid rgba(185,92,92,0.5);
-      background: transparent;
-      color: #d89b9b;
-      padding: 10px 20px;
-      border-radius: 30px;
-      cursor: pointer;
+    .status {
+
+      display: flex;
+      align-items: center;
+
+      color: var(--muted);
+
       font-size: 12px;
-      letter-spacing: 1px;
-    }
 
-    .end-call:hover {
-      background: rgba(185,92,92,0.08);
-    }
-
-    /* ---------- FOOTER ---------- */
-
-    footer {
-      margin-top: auto;
-      padding-top: 35px;
-      color: #615d53;
-      font-size: 10px;
       letter-spacing: 2px;
+    }
+
+
+    .status-dot {
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+
+      margin-right: 9px;
+
+      transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+
+      text-align: center;
+
+      margin-top: 82px;
+    }
+
+
+    .eyebrow {
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      letter-spacing: 5px;
+
+      margin-bottom: 17px;
+
       text-transform: uppercase;
     }
 
-    @media (max-width: 600px) {
-      .hero {
-        margin-top: 55px;
+
+    h1 {
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size:
+        clamp(
+          52px,
+          8vw,
+          92px
+        );
+
+      font-weight: 400;
+
+      line-height: 0.95;
+
+      letter-spacing: -4px;
+
+      color: var(--cream);
+    }
+
+
+    .subtitle {
+
+      margin-top: 24px;
+
+      color: var(--cream-soft);
+
+      font-size: 17px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       ROBOT AREA
+       ========================================================= */
+
+    .robot-area {
+
+      margin-top: 70px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+    }
+
+
+    /* =========================================================
+       ROBOT BUTTON
+       ========================================================= */
+
+    .robot-button {
+
+      position: relative;
+
+      width: 230px;
+      height: 230px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid
+        rgba(243, 234, 213, 0.24);
+
+      background:
+        radial-gradient(
+          circle at 35% 25%,
+          #3b382f 0%,
+          #211f1a 35%,
+          #12120f 70%,
+          #090908 100%
+        );
+
+      cursor: pointer;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+      box-shadow:
+        0 0 0 1px rgba(185,154,91,0.05),
+        0 30px 90px rgba(0,0,0,0.75);
+    }
+
+
+    .robot-button:hover {
+
+      transform:
+        translateY(-5px)
+        scale(1.01);
+
+      border-color:
+        rgba(185,154,91,0.75);
+
+      box-shadow:
+        0 0 55px
+        rgba(185,154,91,0.16),
+
+        0 30px 90px
+        rgba(0,0,0,0.75);
+    }
+
+
+    .robot-button:active {
+
+      transform:
+        scale(0.98);
+    }
+
+
+    .robot-button:disabled {
+
+      cursor: wait;
+
+      opacity: 0.8;
+    }
+
+
+    /* =========================================================
+       ROBOT
+       ========================================================= */
+
+    .robot {
+
+      position: relative;
+
+      width: 94px;
+      height: 78px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff8e7,
+          var(--cream)
+        );
+
+      border-radius:
+        28px
+        28px
+        34px
+        34px;
+
+      box-shadow:
+        0 14px 45px
+        rgba(243,234,213,0.13);
+
+      transition:
+        transform 0.3s ease;
+    }
+
+
+    /* Eyes */
+
+    .robot::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 11px;
+      height: 11px;
+
+      background: #080807;
+
+      border-radius: 50%;
+
+      left: 25px;
+      top: 29px;
+
+      box-shadow:
+        33px 0 #080807;
+    }
+
+
+    /* Mouth */
+
+    .robot::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 27px;
+      height: 4px;
+
+      background: #080807;
+
+      border-radius: 10px;
+
+      left: 34px;
+      top: 51px;
+    }
+
+
+    /* =========================================================
+       ANTENNA
+       ========================================================= */
+
+    .antenna {
+
+      position: absolute;
+
+      width: 3px;
+      height: 23px;
+
+      background: var(--cream);
+
+      top: -19px;
+
+      left: 45px;
+    }
+
+
+    .antenna::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      background: var(--gold-light);
+
+      border-radius: 50%;
+
+      top: -5px;
+
+      left: -2.5px;
+
+      box-shadow:
+        0 0 14px
+        rgba(210,184,117,0.45);
+    }
+
+
+    /* =========================================================
+       LISTENING ANIMATION
+       ========================================================= */
+
+    .robot-button.listening {
+
+      animation:
+        listeningPulse
+        1.7s
+        infinite;
+
+      border-color:
+        rgba(210,184,117,0.9);
+    }
+
+
+    .robot-button.listening .robot {
+
+      animation:
+        robotListening
+        1.1s
+        infinite
+        alternate;
+    }
+
+
+    @keyframes listeningPulse {
+
+      0% {
+
+        box-shadow:
+          0 0 0 0
+          rgba(185,154,91,0.20),
+
+          0 30px 90px
+          rgba(0,0,0,0.75);
       }
 
-      .robot-area {
-        margin-top: 45px;
+      50% {
+
+        box-shadow:
+          0 0 0 25px
+          rgba(185,154,91,0),
+
+          0 0 70px
+          rgba(185,154,91,0.20);
       }
 
-      .robot-button {
-        width: 165px;
-        height: 165px;
+      100% {
+
+        box-shadow:
+          0 0 0 0
+          rgba(185,154,91,0),
+
+          0 30px 90px
+          rgba(0,0,0,0.75);
       }
     }
+
+
+    @keyframes robotListening {
+
+      from {
+
+        transform:
+          translateY(0);
+      }
+
+      to {
+
+        transform:
+          translateY(-4px);
+      }
+    }
+
+
+    /* =========================================================
+       SPEAKING ANIMATION
+       ========================================================= */
+
+    .robot-button.speaking {
+
+      border-color:
+        rgba(243,234,213,0.9);
+
+      animation:
+        speakingPulse
+        0.75s
+        infinite
+        alternate;
+    }
+
+
+    .robot-button.speaking .robot {
+
+      transform:
+        scale(1.04);
+    }
+
+
+    @keyframes speakingPulse {
+
+      from {
+
+        box-shadow:
+          0 0 35px
+          rgba(243,234,213,0.10),
+
+          0 30px 90px
+          rgba(0,0,0,0.75);
+      }
+
+      to {
+
+        box-shadow:
+          0 0 70px
+          rgba(243,234,213,0.20),
+
+          0 30px 90px
+          rgba(0,0,0,0.75);
+      }
+    }
+
+
+    /* =========================================================
+       STATE TEXT
+       ========================================================= */
+
+    .state {
+
+      margin-top: 27px;
+
+      min-height: 18px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      transition:
+        color 0.25s ease;
+    }
+
+
+    /* =========================================================
+       CONVERSATION
+       ========================================================= */
+
+    .conversation {
+
+      width:
+        min(
+          100%,
+          680px
+        );
+
+      margin-top: 48px;
+
+      max-height: 190px;
+
+      overflow-y: auto;
+
+      padding:
+        0
+        15px;
+
+      scrollbar-width: none;
+    }
+
+
+    .conversation::-webkit-scrollbar {
+
+      display: none;
+    }
+
+
+    .message {
+
+      margin-bottom: 18px;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      animation:
+        messageIn
+        0.3s
+        ease;
+    }
+
+
+    @keyframes messageIn {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(6px);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    .message .label {
+
+      margin-bottom: 5px;
+
+      color: var(--gold);
+
+      font-size: 9px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+
+    .message.user {
+
+      color: var(--cream-soft);
+    }
+
+
+    .message.assistant {
+
+      color: var(--cream);
+    }
+
+
+    /* =========================================================
+       END CALL
+       ========================================================= */
+
+    .end-call {
+
+      display: none;
+
+      margin-top: 25px;
+
+      padding:
+        11px
+        22px;
+
+      border:
+        1px solid
+        rgba(185,92,92,0.5);
+
+      border-radius: 30px;
+
+      background:
+        rgba(185,92,92,0.03);
+
+      color: #d89b9b;
+
+      cursor: pointer;
+
+      font-size: 11px;
+
+      letter-spacing: 1.5px;
+
+      transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+
+    .end-call:hover {
+
+      background:
+        rgba(185,92,92,0.10);
+
+      border-color:
+        rgba(185,92,92,0.8);
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+
+      margin-top: auto;
+
+      padding-top: 35px;
+
+      color: #615d53;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       IMPORTANT:
+       HIDE VAPI'S DEFAULT WIDGET UI
+       ========================================================= */
+
+    vapi-widget {
+
+      display: none !important;
+    }
+
+
+    .vapi-btn {
+
+      display: none !important;
+    }
+
+
+    [class*="vapi-btn"] {
+
+      display: none !important;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .page {
+
+        padding:
+          28px
+          18px
+          24px;
+      }
+
+
+      .hero {
+
+        margin-top: 60px;
+      }
+
+
+      h1 {
+
+        font-size: 52px;
+
+        letter-spacing: -2.5px;
+      }
+
+
+      .subtitle {
+
+        font-size: 15px;
+      }
+
+
+      .robot-area {
+
+        margin-top: 50px;
+      }
+
+
+      .robot-button {
+
+        width: 190px;
+        height: 190px;
+      }
+
+
+      .robot {
+
+        width: 80px;
+        height: 67px;
+      }
+
+
+      .robot::before {
+
+        left: 21px;
+        top: 25px;
+
+        box-shadow:
+          28px 0 #080807;
+      }
+
+
+      .robot::after {
+
+        left: 29px;
+        top: 44px;
+      }
+
+
+      .antenna {
+
+        left: 38px;
+      }
+    }
+
   </style>
 </head>
 
+
 <body>
+
+
+  <!-- =========================================================
+       PAGE
+       ========================================================= -->
 
   <main class="page">
 
+
+    <!-- =======================================================
+         HEADER
+         ======================================================= -->
+
     <header>
-      <div class="brand">DENTAL AI</div>
+
+      <div class="brand">
+        DENTAL AI
+      </div>
+
 
       <div class="status">
-        <span class="status-dot"></span>
-        <span id="connectionStatus">READY</span>
+
+        <span
+          id="statusDot"
+          class="status-dot">
+        </span>
+
+        <span id="connectionStatus">
+          READY
+        </span>
+
       </div>
+
     </header>
+
+
+
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
 
     <section class="hero">
 
-      <div class="eyebrow">AI RECEPTIONIST</div>
+      <div class="eyebrow">
+        AI RECEPTIONIST
+      </div>
 
-      <h1>How can we help?</h1>
+
+      <h1>
+        How can we help?
+      </h1>
+
 
       <p class="subtitle">
+
         Speak naturally with our AI dental receptionist.
+
         <br />
+
         Appointments, availability and more.
+
       </p>
 
     </section>
 
+
+
+    <!-- =======================================================
+         ROBOT / CALL CONTROL
+         ======================================================= -->
+
     <section class="robot-area">
+
 
       <button
         id="robotButton"
         class="robot-button"
+        type="button"
         aria-label="Start voice conversation"
       >
+
         <div class="robot">
+
           <div class="antenna"></div>
+
         </div>
+
       </button>
 
-      <div id="stateText" class="state">
+
+      <div
+        id="stateText"
+        class="state"
+      >
         Tap to speak
       </div>
 
-      <button id="endCallButton" class="end-call">
+
+      <button
+        id="endCallButton"
+        class="end-call"
+        type="button"
+      >
         End conversation
       </button>
 
+
     </section>
 
-    <section id="conversation" class="conversation"></section>
+
+
+    <!-- =======================================================
+         TRANSCRIPT
+         ======================================================= -->
+
+    <section
+      id="conversation"
+      class="conversation"
+      aria-live="polite"
+    ></section>
+
+
+
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
 
     <footer>
+
       Powered by AI · Secure voice experience
+
     </footer>
+
 
   </main>
 
-<!-- Vapi Web SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.js"></script>
 
-<script>
 
-  /* =========================================================
-     VAPI CONFIGURATION
-     ========================================================= */
+  <!-- =========================================================
+       VAPI WEB SDK
+       
+       IMPORTANT:
+       This is the browser/module version.
 
-  const VAPI_PUBLIC_KEY = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
-  const ASSISTANT_ID = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
+       We are NOT using the old Vapi HTML widget here.
+       We are creating our own beautiful UI and controlling
+       the Vapi Web SDK ourselves.
+       ========================================================= -->
 
 
-  /* =========================================================
-     CREATE VAPI INSTANCE
-     ========================================================= */
-
-  const vapi = new Vapi(VAPI_PUBLIC_KEY);
-
-
-  /* =========================================================
-     DOM ELEMENTS
-     ========================================================= */
-
-  const robotButton =
-    document.getElementById("robotButton");
-
-  const stateText =
-    document.getElementById("stateText");
-
-  const connectionStatus =
-    document.getElementById("connectionStatus");
-
-  const conversation =
-    document.getElementById("conversation");
-
-  const endCallButton =
-    document.getElementById("endCallButton");
-
-
-  /* =========================================================
-     START CALL
-     ========================================================= */
-
-  robotButton.addEventListener("click", async () => {
-
-    try {
-
-      stateText.textContent = "Connecting...";
-      connectionStatus.textContent = "CONNECTING";
-
-      await vapi.start(ASSISTANT_ID);
-
-    } catch (error) {
-
-      console.error(error);
-
-      stateText.textContent = "Connection failed";
-      connectionStatus.textContent = "ERROR";
-
-    }
-
-  });
-
-
-  /* =========================================================
-     VAPI EVENTS
-     ========================================================= */
-
-  vapi.on("call-start", () => {
-
-    console.log("Call started");
-
-    robotButton.classList.add("listening");
-
-    stateText.textContent = "Listening...";
-    connectionStatus.textContent = "CONNECTED";
-
-    endCallButton.style.display = "block";
-
-  });
-
-
-  vapi.on("call-end", () => {
-
-    console.log("Call ended");
-
-    robotButton.classList.remove("listening");
-    robotButton.classList.remove("speaking");
-
-    stateText.textContent = "Tap to speak";
-    connectionStatus.textContent = "READY";
-
-    endCallButton.style.display = "none";
-
-  });
-
-
-  /* =========================================================
-     SPEECH START
-     ========================================================= */
-
-  vapi.on("speech-start", () => {
-
-    robotButton.classList.add("listening");
-
-    stateText.textContent = "Listening...";
-
-  });
-
-
-  /* =========================================================
-     SPEECH END
-     ========================================================= */
-
-  vapi.on("speech-end", () => {
-
-    robotButton.classList.remove("listening");
-
-    stateText.textContent = "Thinking...";
-
-  });
-
-
-  /* =========================================================
-     TRANSCRIPT
-     ========================================================= */
-
-  vapi.on("message", (message) => {
-
-    console.log("Vapi message:", message);
-
-    if (message.type === "transcript") {
-
-      addTranscript(
-        message.role,
-        message.transcript
-      );
-
-    }
-
-  });
-
-
-  function addTranscript(role, text) {
-
-    if (!text) return;
-
-    const message =
-      document.createElement("div");
-
-    message.className =
-      "message " + role;
-
-    const label =
-      document.createElement("div");
-
-    label.className = "label";
-
-    label.textContent =
-      role === "user"
-        ? "You"
-        : "AI Receptionist";
-
-    const content =
-      document.createElement("div");
-
-    content.textContent = text;
-
-    message.appendChild(label);
-    message.appendChild(content);
-
-    conversation.appendChild(message);
-
-    conversation.scrollTop =
-      conversation.scrollHeight;
-
-  }
-
-
-  /* =========================================================
-     ERROR HANDLING
-     ========================================================= */
-
-  vapi.on("error", (error) => {
-
-    console.error("Vapi error:", error);
-
-    connectionStatus.textContent = "ERROR";
-
-    stateText.textContent =
-      "Something went wrong";
-
-  });
-
-
-  /* =========================================================
-     END CALL
-     ========================================================= */
-
-  endCallButton.addEventListener(
-    "click",
-    () => {
-
-      vapi.stop();
-
-    }
-  );
-
-</script>
+  <script type="module">
 
 
     /* =========================================================
-       DOM ELEMENTS
+       IMPORT VAPI
+       ========================================================= */
+
+    import Vapi from "https://esm.sh/@vapi-ai/web@2.6.1";
+
+
+
+    /* =========================================================
+       YOUR VAPI DETAILS
+       ========================================================= */
+
+    const PUBLIC_API_KEY =
+      "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
+
+
+    const ASSISTANT_ID =
+      "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
+
+
+
+    /* =========================================================
+       CREATE VAPI CLIENT
+       ========================================================= */
+
+    const vapi =
+      new Vapi(PUBLIC_API_KEY);
+
+
+
+    /* =========================================================
+       GET UI ELEMENTS
        ========================================================= */
 
     const robotButton =
       document.getElementById("robotButton");
 
+
     const stateText =
       document.getElementById("stateText");
+
 
     const connectionStatus =
       document.getElementById("connectionStatus");
 
+
+    const statusDot =
+      document.getElementById("statusDot");
+
+
     const conversation =
       document.getElementById("conversation");
 
+
     const endCallButton =
       document.getElementById("endCallButton");
+
+
+
+    /* =========================================================
+       STATUS HELPERS
+       ========================================================= */
+
+    function setStatus(text) {
+
+      connectionStatus.textContent =
+        text;
+
+    }
+
+
+
+    function setDot(active) {
+
+      if (active) {
+
+        statusDot.style.background =
+          "var(--cream)";
+
+        statusDot.style.boxShadow =
+          "0 0 14px rgba(243,234,213,0.55)";
+
+      } else {
+
+        statusDot.style.background =
+          "var(--gold)";
+
+        statusDot.style.boxShadow =
+          "none";
+      }
+
+    }
+
+
+
+    /* =========================================================
+       RESET UI
+       ========================================================= */
+
+    function resetUI() {
+
+      robotButton.classList.remove(
+        "listening",
+        "speaking"
+      );
+
+
+      robotButton.disabled =
+        false;
+
+
+      stateText.textContent =
+        "Tap to speak";
+
+
+      setStatus(
+        "READY"
+      );
+
+
+      setDot(
+        false
+      );
+
+
+      endCallButton.style.display =
+        "none";
+
+    }
+
 
 
     /* =========================================================
        START CALL
        ========================================================= */
 
-    robotButton.addEventListener("click", async () => {
+    robotButton.addEventListener(
+      "click",
+      async function () {
 
-      try {
 
-        stateText.textContent = "Connecting...";
-        connectionStatus.textContent = "CONNECTING";
+        /* ---------------------------------------------
+           Prevent double-click
+           --------------------------------------------- */
 
-        await vapi.start(ASSISTANT_ID);
+        if (
+          robotButton.disabled
+        ) {
 
-      } catch (error) {
+          return;
+        }
 
-        console.error(error);
 
-        stateText.textContent = "Connection failed";
-        connectionStatus.textContent = "ERROR";
+        try {
+
+
+          /* -------------------------------------------
+             UI: CONNECTING
+             ------------------------------------------- */
+
+          robotButton.disabled =
+            true;
+
+
+          stateText.textContent =
+            "Connecting...";
+
+
+          setStatus(
+            "CONNECTING"
+          );
+
+
+          setDot(
+            true
+          );
+
+
+          /* -------------------------------------------
+             START VAPI CALL
+
+             THIS IS THE IMPORTANT BACKEND CALL.
+
+             DO NOT CHANGE THIS.
+             ------------------------------------------- */
+
+          await vapi.start(
+            ASSISTANT_ID
+          );
+
+
+        } catch (error) {
+
+
+          console.error(
+            "Vapi start error:",
+            error
+          );
+
+
+          stateText.textContent =
+            "Connection failed";
+
+
+          setStatus(
+            "ERROR"
+          );
+
+
+          setDot(
+            false
+          );
+
+
+          robotButton.disabled =
+            false;
+
+        }
 
       }
+    );
 
-    });
-
-
-    /* =========================================================
-       VAPI EVENTS
-       ========================================================= */
-
-    vapi.on("call-start", () => {
-
-      console.log("Call started");
-
-      robotButton.classList.add("listening");
-
-      stateText.textContent = "Listening...";
-      connectionStatus.textContent = "CONNECTED";
-
-      endCallButton.style.display = "block";
-
-    });
-
-
-    vapi.on("call-end", () => {
-
-      console.log("Call ended");
-
-      robotButton.classList.remove("listening");
-      robotButton.classList.remove("speaking");
-
-      stateText.textContent = "Tap to speak";
-      connectionStatus.textContent = "READY";
-
-      endCallButton.style.display = "none";
-
-    });
 
 
     /* =========================================================
-       SPEECH START
+       VAPI — CALL START
        ========================================================= */
 
-    vapi.on("speech-start", () => {
-
-      robotButton.classList.add("listening");
-
-      stateText.textContent = "Listening...";
-
-    });
+    vapi.on(
+      "call-start",
+      function () {
 
 
-    /* =========================================================
-       SPEECH END
-       ========================================================= */
-
-    vapi.on("speech-end", () => {
-
-      robotButton.classList.remove("listening");
-
-      stateText.textContent = "Thinking...";
-
-    });
-
-
-    /* =========================================================
-       AI SPEAKING
-       ========================================================= */
-
-    vapi.on("message", (message) => {
-
-      console.log("Vapi message:", message);
-
-      if (
-        message.type === "transcript"
-      ) {
-
-        addTranscript(
-          message.role,
-          message.transcript
+        console.log(
+          "Vapi call started"
         );
 
-      }
 
-    });
+        robotButton.disabled =
+          false;
+
+
+        robotButton.classList.add(
+          "listening"
+        );
+
+
+        stateText.textContent =
+          "Listening...";
+
+
+        setStatus(
+          "CONNECTED"
+        );
+
+
+        setDot(
+          true
+        );
+
+
+        endCallButton.style.display =
+          "block";
+
+      }
+    );
+
 
 
     /* =========================================================
-       ADD TRANSCRIPT
+       VAPI — CALL END
        ========================================================= */
 
-    function addTranscript(role, text) {
+    vapi.on(
+      "call-end",
+      function () {
 
-      if (!text) return;
+
+        console.log(
+          "Vapi call ended"
+        );
+
+
+        resetUI();
+
+      }
+    );
+
+
+
+    /* =========================================================
+       VAPI — USER STARTS SPEAKING
+       ========================================================= */
+
+    vapi.on(
+      "speech-start",
+      function () {
+
+
+        robotButton.classList.add(
+          "listening"
+        );
+
+
+        robotButton.classList.remove(
+          "speaking"
+        );
+
+
+        stateText.textContent =
+          "Listening...";
+
+      }
+    );
+
+
+
+    /* =========================================================
+       VAPI — USER STOPS SPEAKING
+       ========================================================= */
+
+    vapi.on(
+      "speech-end",
+      function () {
+
+
+        robotButton.classList.remove(
+          "listening"
+        );
+
+
+        stateText.textContent =
+          "Thinking...";
+
+      }
+    );
+
+
+
+    /* =========================================================
+       VAPI — VOLUME LEVEL
+
+       This gives the robot a subtle visual response
+       while the AI is speaking.
+       ========================================================= */
+
+    vapi.on(
+      "volume-level",
+      function (volume) {
+
+
+        if (
+          typeof volume === "number" &&
+          volume > 0.03
+        ) {
+
+
+          robotButton.classList.add(
+            "speaking"
+          );
+
+
+          stateText.textContent =
+            "AI speaking...";
+
+
+        } else {
+
+
+          robotButton.classList.remove(
+            "speaking"
+          );
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================================================
+       VAPI — MESSAGES / TRANSCRIPTS
+       ========================================================= */
+
+    vapi.on(
+      "message",
+      function (message) {
+
+
+        console.log(
+          "Vapi message:",
+          message
+        );
+
+
+        if (
+          !message
+        ) {
+
+          return;
+        }
+
+
+        if (
+          message.type ===
+          "transcript"
+        ) {
+
+
+          const transcript =
+            message.transcript;
+
+
+          if (
+            transcript &&
+            transcript.trim()
+          ) {
+
+
+            addTranscript(
+              message.role,
+              transcript
+            );
+
+          }
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================================================
+       TRANSCRIPT FUNCTION
+       ========================================================= */
+
+    function addTranscript(
+      role,
+      text
+    ) {
+
 
       const message =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       message.className =
-        "message " + role;
+        "message " +
+        (
+          role === "user"
+            ? "user"
+            : "assistant"
+        );
+
 
       const label =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      label.className = "label";
+
+      label.className =
+        "label";
+
 
       label.textContent =
         role === "user"
-          ? "You"
-          : "AI Receptionist";
+          ? "YOU"
+          : "AI RECEPTIONIST";
+
 
       const content =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      content.textContent = text;
 
-      message.appendChild(label);
-      message.appendChild(content);
+      content.textContent =
+        text;
 
-      conversation.appendChild(message);
+
+      message.appendChild(
+        label
+      );
+
+
+      message.appendChild(
+        content
+      );
+
+
+      conversation.appendChild(
+        message
+      );
+
 
       conversation.scrollTop =
         conversation.scrollHeight;
@@ -754,36 +1488,71 @@
     }
 
 
-    /* =========================================================
-       ERROR HANDLING
-       ========================================================= */
-
-    vapi.on("error", (error) => {
-
-      console.error("Vapi error:", error);
-
-      connectionStatus.textContent = "ERROR";
-
-      stateText.textContent =
-        "Something went wrong";
-
-    });
-
 
     /* =========================================================
-       END CALL
+       VAPI — ERROR
        ========================================================= */
 
-    endCallButton.addEventListener(
-      "click",
-      () => {
+    vapi.on(
+      "error",
+      function (error) {
 
-        vapi.stop();
+
+        console.error(
+          "Vapi error:",
+          error
+        );
+
+
+        setStatus(
+          "ERROR"
+        );
+
+
+        stateText.textContent =
+          "Something went wrong";
+
+
+        robotButton.disabled =
+          false;
 
       }
     );
 
+
+
+    /* =========================================================
+       END CALL BUTTON
+       ========================================================= */
+
+    endCallButton.addEventListener(
+      "click",
+      async function () {
+
+
+        try {
+
+
+          await vapi.stop();
+
+
+        } catch (error) {
+
+
+          console.error(
+            "Vapi stop error:",
+            error
+          );
+
+
+        }
+
+      }
+    );
+
+
   </script>
+
 
 </body>
 </html>
