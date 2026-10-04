@@ -376,37 +376,215 @@
 
   </main>
 
-
 <!-- Vapi Web SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.js"></script>
+
 <script>
-  var vapiInstance = null;
 
-  const assistant = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
+  /* =========================================================
+     VAPI CONFIGURATION
+     ========================================================= */
 
-  const apiKey = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
+  const VAPI_PUBLIC_KEY = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
+  const ASSISTANT_ID = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
 
-  const buttonConfig = {};
 
-  (function (d, t) {
-    var g = document.createElement(t);
-    var s = d.getElementsByTagName(t)[0];
+  /* =========================================================
+     CREATE VAPI INSTANCE
+     ========================================================= */
 
-    g.src =
-      "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+  const vapi = new Vapi(VAPI_PUBLIC_KEY);
 
-    g.defer = true;
-    g.async = true;
 
-    s.parentNode.insertBefore(g, s);
+  /* =========================================================
+     DOM ELEMENTS
+     ========================================================= */
 
-    g.onload = function () {
-      vapiInstance = window.vapiSDK.run({
-        apiKey: apiKey,
-        assistant: assistant,
-        config: buttonConfig
-      });
-    };
-  })(document, "script");
+  const robotButton =
+    document.getElementById("robotButton");
+
+  const stateText =
+    document.getElementById("stateText");
+
+  const connectionStatus =
+    document.getElementById("connectionStatus");
+
+  const conversation =
+    document.getElementById("conversation");
+
+  const endCallButton =
+    document.getElementById("endCallButton");
+
+
+  /* =========================================================
+     START CALL
+     ========================================================= */
+
+  robotButton.addEventListener("click", async () => {
+
+    try {
+
+      stateText.textContent = "Connecting...";
+      connectionStatus.textContent = "CONNECTING";
+
+      await vapi.start(ASSISTANT_ID);
+
+    } catch (error) {
+
+      console.error(error);
+
+      stateText.textContent = "Connection failed";
+      connectionStatus.textContent = "ERROR";
+
+    }
+
+  });
+
+
+  /* =========================================================
+     VAPI EVENTS
+     ========================================================= */
+
+  vapi.on("call-start", () => {
+
+    console.log("Call started");
+
+    robotButton.classList.add("listening");
+
+    stateText.textContent = "Listening...";
+    connectionStatus.textContent = "CONNECTED";
+
+    endCallButton.style.display = "block";
+
+  });
+
+
+  vapi.on("call-end", () => {
+
+    console.log("Call ended");
+
+    robotButton.classList.remove("listening");
+    robotButton.classList.remove("speaking");
+
+    stateText.textContent = "Tap to speak";
+    connectionStatus.textContent = "READY";
+
+    endCallButton.style.display = "none";
+
+  });
+
+
+  /* =========================================================
+     SPEECH START
+     ========================================================= */
+
+  vapi.on("speech-start", () => {
+
+    robotButton.classList.add("listening");
+
+    stateText.textContent = "Listening...";
+
+  });
+
+
+  /* =========================================================
+     SPEECH END
+     ========================================================= */
+
+  vapi.on("speech-end", () => {
+
+    robotButton.classList.remove("listening");
+
+    stateText.textContent = "Thinking...";
+
+  });
+
+
+  /* =========================================================
+     TRANSCRIPT
+     ========================================================= */
+
+  vapi.on("message", (message) => {
+
+    console.log("Vapi message:", message);
+
+    if (message.type === "transcript") {
+
+      addTranscript(
+        message.role,
+        message.transcript
+      );
+
+    }
+
+  });
+
+
+  function addTranscript(role, text) {
+
+    if (!text) return;
+
+    const message =
+      document.createElement("div");
+
+    message.className =
+      "message " + role;
+
+    const label =
+      document.createElement("div");
+
+    label.className = "label";
+
+    label.textContent =
+      role === "user"
+        ? "You"
+        : "AI Receptionist";
+
+    const content =
+      document.createElement("div");
+
+    content.textContent = text;
+
+    message.appendChild(label);
+    message.appendChild(content);
+
+    conversation.appendChild(message);
+
+    conversation.scrollTop =
+      conversation.scrollHeight;
+
+  }
+
+
+  /* =========================================================
+     ERROR HANDLING
+     ========================================================= */
+
+  vapi.on("error", (error) => {
+
+    console.error("Vapi error:", error);
+
+    connectionStatus.textContent = "ERROR";
+
+    stateText.textContent =
+      "Something went wrong";
+
+  });
+
+
+  /* =========================================================
+     END CALL
+     ========================================================= */
+
+  endCallButton.addEventListener(
+    "click",
+    () => {
+
+      vapi.stop();
+
+    }
+  );
+
 </script>
 
 
