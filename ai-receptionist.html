@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AI Dental Receptionist</title>
+
+  <style>
+    :root {
+      --black: #080807;
+      --black-soft: #11110f;
+      --cream: #f3ead5;
+      --cream-soft: #d8ccb2;
+      --gold: #b99a5b;
+      --muted: #8f897b;
+      --danger: #b95c5c;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 35%, #211f19 0%, var(--black) 48%);
+      color: var(--cream);
+      font-family: Inter, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .page {
+      width: min(100%, 900px);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 38px 24px 30px;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 14px;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      margin-top: 18px;
+      color: var(--cream-soft);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ---------- ROBOT ---------- */
+
+    .robot-area {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .robot-button {
+      position: relative;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      border: 1px solid rgba(243, 234, 213, 0.25);
+      background:
+        radial-gradient(circle at 35% 25%, #3a372d, #171613 55%, #0b0b0a);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.35s ease;
+      box-shadow:
+        0 0 0 1px rgba(185,154,91,0.05),
+        0 25px 70px rgba(0,0,0,0.7);
+    }
+
+    .robot-button:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow:
+        0 0 45px rgba(185,154,91,0.14),
+        0 25px 70px rgba(0,0,0,0.7);
+    }
+
+    .robot {
+      width: 78px;
+      height: 65px;
+      background: var(--cream);
+      border-radius: 24px 24px 30px 30px;
+      position: relative;
+      box-shadow: 0 12px 35px rgba(243,234,213,0.12);
+    }
+
+    .robot::before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      background: var(--black);
+      border-radius: 50%;
+      left: 20px;
+      top: 24px;
+      box-shadow: 29px 0 var(--black);
+    }
+
+    .robot::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 3px;
+      background: var(--black);
+      border-radius: 10px;
+      left: 28px;
+      top: 43px;
+    }
+
+    .antenna {
+      position: absolute;
+      width: 3px;
+      height: 20px;
+      background: var(--cream);
+      top: -16px;
+      left: 38px;
+    }
+
+    .antenna::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      top: -4px;
+      left: -2px;
+    }
+
+    /* ---------- STATES ---------- */
+
+    .robot-button.listening {
+      animation: pulse 1.5s infinite;
+      border-color: var(--gold);
+    }
+
+    .robot-button.speaking {
+      animation: speaking 0.8s infinite alternate;
+      border-color: var(--cream);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow:
+          0 0 0 0 rgba(185,154,91,0.2),
+          0 25px 70px rgba(0,0,0,0.7);
+      }
+
+      50% {
+        box-shadow:
+          0 0 0 22px rgba(185,154,91,0),
+          0 0 55px rgba(185,154,91,0.22);
+      }
+    }
+
+    @keyframes speaking {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.035);
+      }
+    }
+
+    .state {
+      margin-top: 25px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ---------- TRANSCRIPT ---------- */
+
+    .conversation {
+      width: min(100%, 650px);
+      margin-top: 45px;
+      max-height: 170px;
+      overflow-y: auto;
+      padding: 0 10px;
+      scrollbar-width: none;
+    }
+
+    .conversation::-webkit-scrollbar {
+      display: none;
+    }
+
+    .message {
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message .label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+
+    .message.user {
+      color: var(--cream-soft);
+    }
+
+    .message.assistant {
+      color: var(--cream);
+    }
+
+    /* ---------- END CALL ---------- */
+
+    .end-call {
+      display: none;
+      margin-top: 25px;
+      border: 1px solid rgba(185,92,92,0.5);
+      background: transparent;
+      color: #d89b9b;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .end-call:hover {
+      background: rgba(185,92,92,0.08);
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      margin-top: auto;
+      padding-top: 35px;
+      color: #615d53;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        margin-top: 55px;
+      }
+
+      .robot-area {
+        margin-top: 45px;
+      }
+
+      .robot-button {
+        width: 165px;
+        height: 165px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <header>
+      <div class="brand">DENTAL AI</div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        <span id="connectionStatus">READY</span>
+      </div>
+    </header>
+
+    <section class="hero">
+
+      <div class="eyebrow">AI RECEPTIONIST</div>
+
+      <h1>How can we help?</h1>
+
+      <p class="subtitle">
+        Speak naturally with our AI dental receptionist.
+        <br />
+        Appointments, availability and more.
+      </p>
+
+    </section>
+
+    <section class="robot-area">
+
+      <button
+        id="robotButton"
+        class="robot-button"
+        aria-label="Start voice conversation"
+      >
+        <div class="robot">
+          <div class="antenna"></div>
+        </div>
+      </button>
+
+      <div id="stateText" class="state">
+        Tap to speak
+      </div>
+
+      <button id="endCallButton" class="end-call">
+        End conversation
+      </button>
+
+    </section>
+
+    <section id="conversation" class="conversation"></section>
+
+    <footer>
+      Powered by AI · Secure voice experience
+    </footer>
+
+  </main>
+
+
+  <!-- Vapi Web SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.js"></script>
+
+  <script>
+
+    /* =========================================================
+       VAPI CONFIGURATION
+       ========================================================= */
+
+    const VAPI_PUBLIC_KEY = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
+    const ASSISTANT_ID = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
+
+
+    /* =========================================================
+       CREATE VAPI INSTANCE
+       ========================================================= */
+
+    const vapi = new Vapi(VAPI_PUBLIC_KEY);
+
+
+    /* =========================================================
+       DOM ELEMENTS
+       ========================================================= */
+
+    const robotButton =
+      document.getElementById("robotButton");
+
+    const stateText =
+      document.getElementById("stateText");
+
+    const connectionStatus =
+      document.getElementById("connectionStatus");
+
+    const conversation =
+      document.getElementById("conversation");
+
+    const endCallButton =
+      document.getElementById("endCallButton");
+
+
+    /* =========================================================
+       START CALL
+       ========================================================= */
+
+    robotButton.addEventListener("click", async () => {
+
+      try {
+
+        stateText.textContent = "Connecting...";
+        connectionStatus.textContent = "CONNECTING";
+
+        await vapi.start(ASSISTANT_ID);
+
+      } catch (error) {
+
+        console.error(error);
+
+        stateText.textContent = "Connection failed";
+        connectionStatus.textContent = "ERROR";
+
+      }
+
+    });
+
+
+    /* =========================================================
+       VAPI EVENTS
+       ========================================================= */
+
+    vapi.on("call-start", () => {
+
+      console.log("Call started");
+
+      robotButton.classList.add("listening");
+
+      stateText.textContent = "Listening...";
+      connectionStatus.textContent = "CONNECTED";
+
+      endCallButton.style.display = "block";
+
+    });
+
+
+    vapi.on("call-end", () => {
+
+      console.log("Call ended");
+
+      robotButton.classList.remove("listening");
+      robotButton.classList.remove("speaking");
+
+      stateText.textContent = "Tap to speak";
+      connectionStatus.textContent = "READY";
+
+      endCallButton.style.display = "none";
+
+    });
+
+
+    /* =========================================================
+       SPEECH START
+       ========================================================= */
+
+    vapi.on("speech-start", () => {
+
+      robotButton.classList.add("listening");
+
+      stateText.textContent = "Listening...";
+
+    });
+
+
+    /* =========================================================
+       SPEECH END
+       ========================================================= */
+
+    vapi.on("speech-end", () => {
+
+      robotButton.classList.remove("listening");
+
+      stateText.textContent = "Thinking...";
+
+    });
+
+
+    /* =========================================================
+       AI SPEAKING
+       ========================================================= */
+
+    vapi.on("message", (message) => {
+
+      console.log("Vapi message:", message);
+
+      if (
+        message.type === "transcript"
+      ) {
+
+        addTranscript(
+          message.role,
+          message.transcript
+        );
+
+      }
+
+    });
+
+
+    /* =========================================================
+       ADD TRANSCRIPT
+       ========================================================= */
+
+    function addTranscript(role, text) {
+
+      if (!text) return;
+
+      const message =
+        document.createElement("div");
+
+      message.className =
+        "message " + role;
+
+      const label =
+        document.createElement("div");
+
+      label.className = "label";
+
+      label.textContent =
+        role === "user"
+          ? "You"
+          : "AI Receptionist";
+
+      const content =
+        document.createElement("div");
+
+      content.textContent = text;
+
+      message.appendChild(label);
+      message.appendChild(content);
+
+      conversation.appendChild(message);
+
+      conversation.scrollTop =
+        conversation.scrollHeight;
+
+    }
+
+
+    /* =========================================================
+       ERROR HANDLING
+       ========================================================= */
+
+    vapi.on("error", (error) => {
+
+      console.error("Vapi error:", error);
+
+      connectionStatus.textContent = "ERROR";
+
+      stateText.textContent =
+        "Something went wrong";
+
+    });
+
+
+    /* =========================================================
+       END CALL
+       ========================================================= */
+
+    endCallButton.addEventListener(
+      "click",
+      () => {
+
+        vapi.stop();
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
