@@ -377,24 +377,37 @@
   </main>
 
 
-  <!-- Vapi Web SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web/dist/vapi.js"></script>
+<!-- Vapi Web SDK -->
+<script>
+  var vapiInstance = null;
 
-  <script>
+  const assistant = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
 
-    /* =========================================================
-       VAPI CONFIGURATION
-       ========================================================= */
+  const apiKey = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
 
-    const VAPI_PUBLIC_KEY = "8279b3a3-4a0b-4a3a-9489-336c9d09c3af";
-    const ASSISTANT_ID = "0b21dbbc-7e4c-4ac4-9669-7e0c4d0d59fd";
+  const buttonConfig = {};
 
+  (function (d, t) {
+    var g = document.createElement(t);
+    var s = d.getElementsByTagName(t)[0];
 
-    /* =========================================================
-       CREATE VAPI INSTANCE
-       ========================================================= */
+    g.src =
+      "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
 
-    const vapi = new Vapi(VAPI_PUBLIC_KEY);
+    g.defer = true;
+    g.async = true;
+
+    s.parentNode.insertBefore(g, s);
+
+    g.onload = function () {
+      vapiInstance = window.vapiSDK.run({
+        apiKey: apiKey,
+        assistant: assistant,
+        config: buttonConfig
+      });
+    };
+  })(document, "script");
+</script>
 
 
     /* =========================================================
