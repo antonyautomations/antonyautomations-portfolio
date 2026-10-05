@@ -1364,57 +1364,50 @@
 
 
     /* =========================================================
-       VAPI — MESSAGES / TRANSCRIPTS
-       ========================================================= */
+   VAPI — MESSAGES / TRANSCRIPTS
+   ========================================================= */
 
-    vapi.on(
-      "message",
-      function (message) {
+vapi.on(
+  "message",
+  function (message) {
 
-
-        console.log(
-          "Vapi message:",
-          message
-        );
-
-
-        if (
-          !message
-        ) {
-
-          return;
-        }
-
-
-        if (
-          message.type ===
-          "transcript"
-        ) {
-
-
-          const transcript =
-            message.transcript;
-
-
-          if (
-            transcript &&
-            transcript.trim()
-          ) {
-
-
-            addTranscript(
-              message.role,
-              transcript
-            );
-
-          }
-
-        }
-
-      }
+    console.log(
+      "Vapi message:",
+      message
     );
 
+    if (!message) {
+      return;
+    }
 
+    /* ---------------------------------------------------------
+       ONLY DISPLAY FINAL TRANSCRIPTS
+       This prevents partial transcript updates from
+       appearing as duplicate subtitles.
+       --------------------------------------------------------- */
+
+    if (
+      message.type === "transcript" &&
+      message.transcriptType === "final"
+    ) {
+
+      const transcript =
+        message.transcript;
+
+      if (
+        transcript &&
+        transcript.trim()
+      ) {
+
+        addTranscript(
+          message.role,
+          transcript
+        );
+
+      }
+    }
+  }
+); 
 
     /* =========================================================
        TRANSCRIPT FUNCTION
