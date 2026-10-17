@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The First Client | A Promise to Myself</title>
+
+<meta name="theme-color" content="#f6f1e8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f6f1e8;
+  --cream-dark: #e9dfce;
+  --ink: #25251f;
+  --muted: #777064;
+  --gold: #a78a54;
+  --line: #d9cebb;
+  --white: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--gold);
+  color: white;
+}
+
+/* NAVIGATION */
+
+header {
+  min-height: 76px;
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.header-note {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 650px;
+  padding: 100px 24px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 1px solid rgba(167, 138, 84, .17);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: -160px;
+  left: -100px;
+}
+
+.hero::after {
+  right: -120px;
+  bottom: -170px;
+  width: 360px;
+  height: 360px;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 850px;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin-bottom: 27px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(54px, 8vw, 100px);
+  font-weight: 500;
+  line-height: .99;
+  letter-spacing: -2px;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.hero-description {
+  max-width: 520px;
+  margin: 30px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.ornament {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin: 35px auto;
+  color: var(--gold);
+}
+
+.ornament span {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 15px 27px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .25s ease;
+}
+
+.hero-button:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* PERSONAL MANIFESTO */
+
+.manifesto {
+  padding: 90px 24px;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-label {
+  margin-bottom: 22px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.manifesto h2 {
+  max-width: 750px;
+  margin: 0 0 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.manifesto h2 em {
+  color: #d3bb8e;
+}
+
+.manifesto-text {
+  max-width: 650px;
+  color: #d1c9bc;
+  font-size: 15px;
+  line-height: 2;
+}
+
+.manifesto-text p {
+  margin-bottom: 18px;
+}
+
+/* QUOTES */
+
+.quotes-section {
+  padding: 95px 7%;
+}
+
+.quotes-heading {
+  max-width: 700px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.quotes-heading h2 {
+  margin: 0 0 15px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(38px, 5vw, 60px);
+  font-weight: 500;
+}
+
+.quotes-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.quotes-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.quote-card {
+  min-height: 230px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, .6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .25s, border-color .25s;
+}
+
+.quote-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.quote-mark {
+  color: var(--gold);
+  font-family: Georgia, serif;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.quote-text {
+  margin: 12px 0 25px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.quote-author {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* DAILY PROMISE */
+
+.promise {
+  padding: 95px 24px;
+  text-align: center;
+  background: #eae1d2;
+}
+
+.promise-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.promise h2 {
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 6vw, 70px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.promise p {
+  max-width: 570px;
+  margin: 0 auto;
+  color: #655d51;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.promise-list {
+  margin: 40px auto;
+  padding: 0;
+  max-width: 480px;
+  list-style: none;
+  text-align: left;
+}
+
+.promise-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(80, 70, 50, .17);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.promise-list li::before {
+  content: "✦";
+  margin-right: 13px;
+  color: var(--gold);
+}
+
+.promise-button {
+  padding: 16px 28px;
+  border: 0;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.promise-button:hover {
+  background: #514633;
+}
+
+.promise-message {
+  min-height: 28px;
+  margin-top: 22px;
+  color: #5c4c2f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+}
+
+/* CLOSING */
+
+.closing {
+  padding: 100px 24px 75px;
+  text-align: center;
+}
+
+.closing h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(45px, 7vw, 82px);
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.closing h2 em {
+  color: var(--gold);
+}
+
+.closing p {
+  max-width: 490px;
+  margin: 25px auto 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.signature {
+  margin-top: 40px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-style: italic;
+}
+
+footer {
+  padding: 25px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  header {
+    padding: 18px 22px;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .header-note {
+    max-width: 100px;
+    text-align: right;
+    font-size: 8px;
+    line-height: 1.7;
+  }
+
+  .hero {
+    min-height: 590px;
+    padding: 80px 22px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .manifesto,
+  .quotes-section {
+    padding: 70px 22px;
+  }
+
+  .quotes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-card {
+    min-height: 195px;
+    padding: 25px;
+  }
+
+  .quote-text {
+    font-size: 25px;
+  }
+
+  .promise {
+    padding: 75px 22px;
+  }
+
+  .closing {
+    padding: 75px 22px 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">THE FIRST CLIENT.</div>
+  <div class="header-note">A promise to myself</div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">To the person who refused to quit</div>
+
+      <h1>
+        One day,<br>
+        <em>it will all make sense.</em>
+      </h1>
+
+      <p class="hero-description">
+        Every unanswered message. Every imperfect attempt. Every quiet
+        day when nobody noticed the work. None of it has to be wasted.
+        I am learning, building, and becoming the person capable of
+        creating the life I imagine.
+      </p>
+
+      <div class="ornament">
+        <span></span>
+        ✦
+        <span></span>
+      </div>
+
+      <a class="hero-button" href="#my-promise">
+        Read My Promise
+      </a>
+    </div>
+  </section>
+
+  <!-- PERSONAL MANIFESTO -->
+  <section class="manifesto">
+    <div class="section-inner">
+      <div class="section-label">My personal manifesto</div>
+
+      <h2>
+        I did not come this far
+        just to <em>abandon myself.</em>
+      </h2>
+
+      <div class="manifesto-text">
+        <p>
+          I started this journey with an idea, a laptop, a willingness
+          to learn, and a dream that was bigger than my current
+          circumstances.
+        </p>
+
+        <p>
+          The beginning is quieter than I imagined. The replies are
+          fewer than I hoped. Sometimes the work feels endless, and
+          progress feels invisible.
+        </p>
+
+        <p>
+          But a quiet season is not a final verdict. Rejection is not
+          proof that I am incapable. A difficult week does not define
+          the rest of my life.
+        </p>
+
+        <p>
+          I will improve my offer. I will understand my customers.
+          I will build things that solve real problems. I will keep
+          reaching out, keep learning from what happens, and keep
+          showing up.
+        </p>
+
+        <p>
+          I cannot control when my first client says yes. But I can
+          control whether I continue becoming better at earning that
+          yes.
+        </p>
+
+        <p>
+          <strong>I am not waiting for confidence. I am building it
+          through action.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section class="quotes-section">
+    <div class="quotes-heading">
+      <div class="section-label">Words to carry with me</div>
+      <h2>Wisdom for the difficult days.</h2>
+      <p>
+        Great minds remind us that courage is not the absence of
+        difficulty. It is the decision to continue in spite of it.
+      </p>
+    </div>
+
+    <div class="quotes-grid">
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            It always seems impossible until it's done.
+          </p>
+        </div>
+        <div class="quote-author">Nelson Mandela · Attributed</div>
+      </article>
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            It is hard to fail, but it is worse never to have tried
+            to succeed.
+          </p>
+        </div>
+        <div class="quote-author">Theodore Roosevelt</div>
+      </article>
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            Our greatest glory is not in never falling, but in
+            rising every time we fall.
+          </p>
+        </div>
+        <div class="quote-author">Confucius · Commonly attributed</div>
+      </article>
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            Nothing will work unless you do.
+          </p>
+        </div>
+        <div class="quote-author">Maya Angelou</div>
+      </article>
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            Energy and persistence conquer all things.
+          </p>
+        </div>
+        <div class="quote-author">Benjamin Franklin</div>
+      </article>
+
+      <article class="quote-card">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">
+            The secret of getting ahead is getting started.
+          </p>
+        </div>
+        <div class="quote-author">Mark Twain · Commonly attributed</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- DAILY PROMISE -->
+  <section class="promise" id="my-promise">
+    <div class="promise-inner">
+
+      <div class="section-label">The promise I make today</div>
+
+      <h2>
+        I will give my dream<br>
+        a fair chance.
+      </h2>
+
+      <p>
+        Not by demanding instant success from myself, but by doing
+        the next honest piece of work.
+      </p>
+
+      <ul class="promise-list">
+        <li>I will focus on solving real problems, not just chasing money.</li>
+        <li>I will send thoughtful outreach even when yesterday was quiet.</li>
+        <li>I will learn from rejection instead of turning it into an identity.</li>
+        <li>I will improve my work one step at a time.</li>
+        <li>I will rest when I need to, then return with intention.</li>
+        <li>I will measure myself by the effort and learning I control.</li>
+      </ul>
+
+      <button class="promise-button" id="affirmButton" type="button">
+        REMIND ME WHY I STARTED
+      </button>
+
+      <div class="promise-message" id="affirmMessage" aria-live="polite">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="section-label">For the days I forget</div>
+
+    <h2>
+      The first client<br>
+      is a milestone.<br>
+      <em>Not my final destination.</em>
+    </h2>
+
+    <p>
+      I will celebrate the first payment. I will be grateful for
+      the first person who trusts me. Then I will keep learning,
+      serving, and building — one customer at a time.
+    </p>
+
+    <p>
+      My journey does not need to look impressive to everyone else.
+      It needs to keep moving in a direction that matters to me.
+    </p>
+
+    <div class="signature">Keep going. Keep becoming.</div>
+  </section>
+
+</main>
+
+<footer>
+  Built with belief · One day at a time
+</footer>
+
+<script>
+const affirmations = [
+  "I only need to take the next step.",
+  "One rejection cannot decide my future.",
+  "My job is to keep improving and keep showing up.",
+  "I can be a beginner and still build something meaningful.",
+  "Progress is allowed to be quiet.",
+  "I will earn trust by solving real problems.",
+  "I do not need to have everything figured out today.",
+  "The next honest attempt is still worth making."
+];
+
+let affirmationIndex = 0;
+
+const affirmButton = document.getElementById("affirmButton");
+const affirmMessage = document.getElementById("affirmMessage");
+
+affirmButton.addEventListener("click", function () {
+  affirmMessage.textContent = affirmations[affirmationIndex];
+
+  affirmationIndex =
+    (affirmationIndex + 1) % affirmations.length;
+});
+</script>
+
+</body>
+</html>
