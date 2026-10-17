@@ -588,10 +588,11 @@
     </div>
   </main>
 
-  <script>
-    
+  
+<script>
 const form = document.getElementById("contactForm");
-const statusMessage = document.getElementById("formStatus");
+const statusMessage = document.getElementById("successMessage");
+const submitButton = form.querySelector('button[type="submit"]');
 
 form.addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -621,6 +622,8 @@ form.addEventListener("submit", async function (event) {
 
   statusMessage.classList.add("visible");
   statusMessage.textContent = "Sending your enquiry...";
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
 
   try {
     const response = await fetch(
@@ -635,7 +638,7 @@ form.addEventListener("submit", async function (event) {
     );
 
     if (!response.ok) {
-      throw new Error("Request failed: " + response.status);
+      throw new Error("Webhook returned HTTP " + response.status);
     }
 
     statusMessage.textContent =
@@ -647,10 +650,14 @@ form.addEventListener("submit", async function (event) {
     console.error("Webhook error:", error);
 
     statusMessage.textContent =
-      "We couldn't submit your enquiry. Please try again or contact us directly.";
+      "Submission failed. Please try again or contact us directly.";
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Submit Inquiry";
   }
 });
+</script>
 
-  </script>
 </body>
 </html>
