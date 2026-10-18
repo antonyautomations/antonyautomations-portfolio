@@ -1,21 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Construction & Remodeling</title>
+  <title>Contact AZ Construction & Renovation</title>
 
   <style>
-    :root {
-      --accent: #c83225;
-      --text: #171717;
-      --muted: #666;
-      --border: #cbd2dc;
-      --soft: #f7f7f7;
-      --gold: #d9c18a;
-      --dark-green: #14251c;
-    }
-
     * {
       box-sizing: border-box;
     }
@@ -23,7 +14,7 @@
     body {
       margin: 0;
       background: #fff;
-      color: var(--text);
+      color: #292929;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 13px;
       line-height: 1.6;
@@ -31,95 +22,68 @@
 
     .page {
       width: min(1120px, 100%);
-      margin: 0 auto;
-      padding: 45px 35px 60px;
+      margin: auto;
+      padding: 35px;
     }
 
-    .contact-layout {
+    .layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: start;
     }
 
-    /* LEFT COLUMN */
-
-    .contact-info {
-      padding-top: 4px;
-    }
-
     h1 {
       font-size: 19px;
-      line-height: 1.4;
-      margin: 0 0 10px;
-      font-weight: 750;
-      letter-spacing: 0.1px;
+      margin: 0 0 12px;
+      font-weight: 700;
     }
 
     .intro {
-      color: #5b5b5b;
+      color: #555;
       font-size: 12px;
-      line-height: 1.7;
-      margin: 0 0 13px;
+      line-height: 1.75;
+      margin: 0 0 14px;
     }
 
-    .intro a,
-    .privacy a {
-      color: var(--accent);
+    .intro a {
+      color: #c83225;
       text-decoration: none;
-    }
-
-    .intro a:hover,
-    .privacy a:hover {
-      text-decoration: underline;
     }
 
     .team-image {
       display: block;
       width: 100%;
-      aspect-ratio: 1.5 / 1;
+      aspect-ratio: 1.5;
       object-fit: cover;
-      margin-top: 23px;
+      margin-top: 22px;
     }
 
     .social-heading {
-      margin-top: 8px;
-      margin-bottom: 7px;
+      margin: 8px 0;
     }
 
     .social-links {
       display: flex;
       gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
     }
 
     .social-links a {
+      display: grid;
+      place-items: center;
       width: 19px;
       height: 19px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
+      background: #c83225;
       color: white;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
-      border-radius: 2px;
-      transition: opacity 0.2s, transform 0.2s;
     }
-
-    .social-links a:hover {
-      opacity: 0.8;
-      transform: translateY(-2px);
-    }
-
-    /* RIGHT COLUMN / FORM */
 
     .form-panel {
+      padding: 24px;
       background: #f8f8f8;
-      padding: 24px 26px 27px;
-      border: 1px solid #f0f0f0;
+      border: 1px solid #eee;
     }
 
     .form-grid {
@@ -141,59 +105,45 @@
 
     label,
     legend {
-      color: #383838;
       font-size: 12px;
-      font-weight: 400;
+      color: #383838;
     }
 
     .required {
-      color: var(--accent);
-      font-weight: bold;
+      color: #c83225;
     }
 
     input,
-    select,
     textarea {
       width: 100%;
       min-width: 0;
-      padding: 9px 10px;
-      border: 1px solid var(--border);
+      padding: 10px;
+      border: 1px solid #cbd2dc;
       border-radius: 2px;
-      background: #fff;
+      background: white;
       color: #333;
       font: inherit;
       font-size: 12px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input,
-    select {
+    input {
       min-height: 37px;
     }
 
-    input::placeholder,
-    textarea::placeholder {
-      color: #858585;
-      opacity: 1;
-    }
-
     input:focus,
-    select:focus,
     textarea:focus {
-      border-color: #777;
-      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+      outline: 1px solid #777;
     }
 
     fieldset {
+      border: 0;
       margin: 0;
       padding: 0;
-      border: 0;
       min-width: 0;
     }
 
     legend {
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     .radio-list {
@@ -208,24 +158,19 @@
       gap: 7px;
       cursor: pointer;
       color: #555;
-      font-size: 12px;
-      line-height: 1.5;
     }
 
     .radio-option input {
       width: 13px;
-      height: 13px;
       min-height: auto;
       margin: 0;
-      padding: 0;
-      flex-shrink: 0;
-      accent-color: var(--accent);
+      accent-color: #c83225;
     }
 
     .address-fields {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 11px 14px;
+      gap: 12px;
     }
 
     .address-fields .full {
@@ -235,17 +180,11 @@
     .address-fields small {
       color: #777;
       font-size: 10px;
-      margin-top: -1px;
     }
 
     textarea {
+      min-height: 100px;
       resize: vertical;
-      min-height: 105px;
-      line-height: 1.6;
-    }
-
-    .budget-input {
-      max-width: 180px;
     }
 
     .privacy {
@@ -253,20 +192,21 @@
       font-size: 10px;
       font-style: italic;
       line-height: 1.7;
-      margin: 0;
+    }
+
+    .privacy a {
+      color: #c83225;
     }
 
     .submit-button {
       width: 100%;
-      padding: 12px 16px;
-      border: none;
+      padding: 12px;
+      border: 0;
       border-radius: 2px;
       background: #198754;
       color: #fff;
-      font-size: 13px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s, opacity 0.2s;
     }
 
     .submit-button:hover {
@@ -274,183 +214,117 @@
     }
 
     .submit-button:disabled {
+      opacity: .65;
       cursor: wait;
-      opacity: 0.7;
     }
 
-    /* INLINE STATUS MESSAGE */
-
-    .success-message {
+    .status {
       display: none;
-      margin-top: 14px;
-      padding: 12px;
-      color: #176b35;
-      background: #eaf7ed;
-      border: 1px solid #bde5c5;
-      border-radius: 3px;
-      overflow-wrap: anywhere;
+      margin-top: 12px;
+      padding: 10px;
+      font-size: 12px;
     }
 
-    .success-message.visible {
+    .status.visible {
       display: block;
     }
 
-    .success-message.error {
+    .status.error {
       color: #9c2525;
       background: #fff0f0;
-      border-color: #efc1c1;
+      border: 1px solid #efc1c1;
     }
 
-    /* PREMIUM FULL-SCREEN SUCCESS EXPERIENCE */
+    /* Clean, full-page thank-you state */
 
-    .success-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
+    .thank-you {
+      display: none;
+      min-height: 70vh;
+      width: 100%;
+      padding: 35px 20px;
+      text-align: center;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      background: rgba(15, 24, 20, 0.96);
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      overflow-y: auto;
-      transition: opacity 0.45s ease, visibility 0.45s ease;
+      background: #fff;
     }
 
-    .success-overlay.visible {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+    .thank-you.visible {
+      display: flex;
+      animation: fadeIn .45s ease both;
     }
 
-    .success-card {
-      width: min(680px, 100%);
-      padding: clamp(32px, 6vw, 68px) clamp(24px, 6vw, 64px);
-      text-align: center;
-      color: #f8f5ec;
-      background: linear-gradient(145deg, #1e3028, #101b16);
-      border: 1px solid rgba(216, 190, 132, 0.65);
-      border-radius: 18px;
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.4);
-      transform: translateY(18px) scale(0.98);
-      transition: transform 0.5s cubic-bezier(.2, .8, .2, 1);
+    .thank-you-inner {
+      width: min(560px, 100%);
     }
 
-    .success-overlay.visible .success-card {
-      transform: translateY(0) scale(1);
-    }
-
-    .success-check {
+    .checkmark {
+      width: 54px;
+      height: 54px;
       display: grid;
       place-items: center;
-      width: 82px;
-      height: 82px;
-      margin: 0 auto 26px;
-      color: var(--dark-green);
-      background: var(--gold);
+      margin: 0 auto 22px;
+      border: 1px solid #198754;
       border-radius: 50%;
-      font-size: 42px;
+      color: #198754;
+      font-size: 27px;
       font-weight: 400;
-      box-shadow: 0 0 0 10px rgba(217, 193, 138, 0.10);
-      animation: checkPop 0.55s 0.15s both;
     }
 
-    .success-eyebrow {
+    .thank-you h2 {
       margin: 0 0 12px;
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      color: #234b3b;
+      font-size: clamp(25px, 4vw, 34px);
+      line-height: 1.25;
+      font-weight: 600;
     }
 
-    .success-card h2 {
-      margin: 0 auto 18px;
-      max-width: 560px;
-      color: #fffdf7;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 5vw, 54px);
-      font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.6px;
-    }
-
-    .success-copy {
-      max-width: 480px;
-      margin: 0 auto 28px;
-      color: #d8ded9;
-      font-size: clamp(15px, 2vw, 18px);
+    .thank-you p {
+      margin: 0 auto;
+      max-width: 440px;
+      color: #555;
+      font-size: 15px;
       line-height: 1.8;
     }
 
-    .success-divider {
-      width: 72px;
+    .thank-you .divider {
+      width: 45px;
       height: 2px;
-      margin: 0 auto 26px;
-      background: var(--gold);
+      background: #198754;
+      margin: 22px auto;
     }
 
-    .success-close {
-      padding: 13px 25px;
-      border: 1px solid rgba(217, 193, 138, 0.85);
-      border-radius: 3px;
-      color: #f8f5ec;
-      background: transparent;
-      font: inherit;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+    .thank-you .small-note {
+      font-size: 12px;
+      color: #777;
     }
 
-    .success-close:hover {
-      color: var(--dark-green);
-      background: var(--gold);
-    }
-
-    @keyframes checkPop {
-      0% {
-        transform: scale(0.55);
+    @keyframes fadeIn {
+      from {
         opacity: 0;
+        transform: translateY(8px);
       }
-      75% {
-        transform: scale(1.08);
+      to {
         opacity: 1;
-      }
-      100% {
-        transform: scale(1);
+        transform: translateY(0);
       }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      .success-overlay,
-      .success-card {
-        transition: none;
-      }
-
-      .success-check {
-        animation: none;
-      }
-    }
-
-    /* RESPONSIVE */
 
     @media (max-width: 700px) {
       .page {
-        padding: 28px 18px 40px;
+        padding: 25px 18px;
       }
 
-      .contact-layout {
+      .layout {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 28px;
       }
 
       .form-panel {
-        padding: 21px 17px;
+        padding: 18px;
       }
 
-      .team-image {
-        max-height: 330px;
+      .thank-you {
+        min-height: 75vh;
       }
     }
 
@@ -465,17 +339,21 @@
         grid-column: 1 / -1;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .thank-you.visible {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
 <body>
   <main class="page">
-    <div class="contact-layout">
+    <div class="layout" id="contactLayout">
 
-      <!-- LEFT COLUMN -->
-      <section class="contact-info" aria-labelledby="contact-title">
-
-        <h1 id="contact-title">CONNECT WITH US</h1>
+      <section class="contact-info">
+        <h1>CONNECT WITH US</h1>
 
         <p class="intro">
           Contact us to learn more about how we can help with your home
@@ -489,341 +367,152 @@
           privacy. Please don't submit sensitive information such as social
           security numbers, credit card, or bank information.
           For more about our services,
-          <a href="#services">please click here</a>.
+          <a href="https://azconstruct.com/services/">please click here</a>.
         </p>
 
         <img
           class="team-image"
           src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85"
-          alt="Professional team collaborating at work"
-          loading="lazy"
+          alt="Team collaborating at work"
         >
 
         <h1 class="social-heading">FOLLOW US</h1>
 
         <nav class="social-links" aria-label="Social media links">
-          <!-- Replace # with actual social media profile URLs -->
           <a href="#" aria-label="Facebook">f</a>
           <a href="#" aria-label="Instagram">◎</a>
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="Google">G</a>
-          <a href="#" aria-label="Home services">⌂</a>
+          <a href="#" aria-label="Home">⌂</a>
           <a href="#" aria-label="Houzz">H</a>
         </nav>
-
       </section>
 
-      <!-- RIGHT COLUMN: CONTACT FORM -->
-      <section class="form-panel" aria-label="Project inquiry form">
-
+      <section class="form-panel" id="formPanel">
         <form id="contactForm">
           <div class="form-grid">
 
             <div class="field full">
-              <label>
-                Name <span class="required">*</span>
-              </label>
-
+              <label>Name <span class="required">*</span></label>
               <div class="form-grid">
                 <div class="field">
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    autocomplete="given-name"
-                    required
-                  >
+                  <input name="firstName" placeholder="First Name" required>
                 </div>
-
                 <div class="field">
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    autocomplete="family-name"
-                    required
-                  >
+                  <input name="lastName" placeholder="Last Name" required>
                 </div>
               </div>
             </div>
 
             <div class="field full">
-              <label for="phone">
-                Phone Number <span class="required">*</span>
-              </label>
-
-              <input
-                id="phone"
-                type="tel"
-                name="phone"
-                placeholder="(000) 000-0000"
-                autocomplete="tel"
-                required
-              >
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input id="phone" name="phone" type="tel" placeholder="(000) 000-0000" required>
             </div>
 
             <div class="field full">
               <label for="email">Email</label>
-
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="example@example.com"
-                autocomplete="email"
-              >
+              <input id="email" name="email" type="email" placeholder="example@example.com">
             </div>
 
             <fieldset class="field full">
-              <legend>
-                City <span class="required">*</span>
-              </legend>
-
+              <legend>City <span class="required">*</span></legend>
               <div class="radio-list">
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="city"
-                    value="Tucson Metro Area"
-                    required
-                  >
-                  Tucson Metro Area
-                </label>
-
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="city"
-                    value="Phoenix Metro Area"
-                  >
-                  Phoenix Metro Area
-                </label>
-
-                <label class="radio-option">
-                  <input
-                    type="radio"
-                    name="city"
-                    value="Other"
-                  >
-                  Other
-                </label>
+                <label class="radio-option"><input type="radio" name="city" value="Tucson Metro Area" required> Tucson Metro Area</label>
+                <label class="radio-option"><input type="radio" name="city" value="Phoenix Metro Area"> Phoenix Metro Area</label>
+                <label class="radio-option"><input type="radio" name="city" value="Other"> Other</label>
               </div>
             </fieldset>
 
             <div class="field full">
-              <label for="street">
-                Address <span class="required">*</span>
-              </label>
-
+              <label for="street">Address <span class="required">*</span></label>
               <div class="address-fields">
                 <div class="field full">
-                  <input
-                    id="street"
-                    type="text"
-                    name="street"
-                    autocomplete="address-line1"
-                    required
-                  >
+                  <input id="street" name="street" required>
                   <small>Street Address</small>
                 </div>
-
                 <div class="field full">
-                  <input
-                    type="text"
-                    name="addressLine2"
-                    autocomplete="address-line2"
-                  >
+                  <input name="addressLine2">
                   <small>Street Address Line 2</small>
                 </div>
-
                 <div class="field">
-                  <input
-                    type="text"
-                    name="addressCity"
-                    autocomplete="address-level2"
-                    aria-label="Address city"
-                  >
+                  <input name="addressCity" aria-label="Address city">
                   <small>City</small>
                 </div>
-
                 <div class="field">
-                  <input
-                    type="text"
-                    name="state"
-                    autocomplete="address-level1"
-                    aria-label="State or province"
-                  >
+                  <input name="state" aria-label="State / Province">
                   <small>State / Province</small>
                 </div>
-
                 <div class="field full">
-                  <input
-                    type="text"
-                    name="postalCode"
-                    autocomplete="postal-code"
-                    aria-label="Postal or ZIP code"
-                  >
+                  <input name="postalCode" aria-label="Postal / Zip Code">
                   <small>Postal / Zip Code</small>
                 </div>
               </div>
             </div>
 
             <div class="field full">
-              <label for="description">
-                Description of Work <span class="required">*</span>
-              </label>
-
-              <textarea
-                id="description"
-                name="description"
-                required
-              ></textarea>
+              <label for="description">Description of Work <span class="required">*</span></label>
+              <textarea id="description" name="description" required></textarea>
             </div>
 
             <div class="field full">
               <label for="budget">Budget Limit</label>
-
-              <input
-                class="budget-input"
-                id="budget"
-                type="text"
-                name="budget"
-                inputmode="decimal"
-              >
+              <input id="budget" name="budget">
             </div>
 
             <p class="privacy full">
               By submitting this form, you acknowledge that you have read
-              or had the opportunity to read the
-              <a href="#privacy">Privacy Policy</a> and agree to be contacted
-              by phone, text, or email.
+              or had the opportunity to read the Privacy Policy and agree
+              to be contacted by phone, text, or email.
             </p>
 
             <fieldset class="field full">
               <legend>How did you hear about us?</legend>
-
               <div class="radio-list">
-                <label class="radio-option">
-                  <input type="radio" name="referral" value="Online Search">
-                  Online Search
-                </label>
-
-                <label class="radio-option">
-                  <input type="radio" name="referral" value="Social Media">
-                  Social Media
-                </label>
-
-                <label class="radio-option">
-                  <input type="radio" name="referral" value="Friend Referral">
-                  Friend Referral
-                </label>
-
-                <label class="radio-option">
-                  <input type="radio" name="referral" value="Advertisement">
-                  Advertisement
-                </label>
-
-                <label class="radio-option">
-                  <input type="radio" name="referral" value="Other">
-                  Other
-                </label>
+                <label class="radio-option"><input type="radio" name="referral" value="Online Search"> Online Search</label>
+                <label class="radio-option"><input type="radio" name="referral" value="Social Media"> Social Media</label>
+                <label class="radio-option"><input type="radio" name="referral" value="Friend Referral"> Friend Referral</label>
+                <label class="radio-option"><input type="radio" name="referral" value="Advertisement"> Advertisement</label>
+                <label class="radio-option"><input type="radio" name="referral" value="Other"> Other</label>
               </div>
             </fieldset>
 
             <div class="field full">
-              <button class="submit-button" type="submit">
-                Submit Inquiry
-              </button>
-
-              <div
-                id="successMessage"
-                class="success-message"
-                role="status"
-                aria-live="polite"
-              ></div>
+              <button class="submit-button" type="submit">Submit Inquiry</button>
+              <div id="status" class="status" role="status" aria-live="polite"></div>
             </div>
 
           </div>
         </form>
-
       </section>
     </div>
+
+    <!-- This replaces the whole form layout after a successful submission -->
+    <section class="thank-you" id="thankYou" aria-live="polite">
+      <div class="thank-you-inner">
+        <div class="checkmark" aria-hidden="true">✓</div>
+
+        <h2>Thank You for Your Inquiry</h2>
+
+        <p>
+          Your project details have been submitted successfully.
+          We appreciate your interest in AZ Construction &amp; Renovation.
+        </p>
+
+        <div class="divider"></div>
+
+        <p class="small-note">
+          We look forward to learning more about your project.
+        </p>
+      </div>
+    </section>
   </main>
-
-  <!-- FULL-SCREEN SUCCESS OVERLAY -->
-  <section
-    id="successOverlay"
-    class="success-overlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="successTitle"
-    aria-describedby="successCopy"
-    aria-hidden="true"
-  >
-    <div class="success-card">
-
-      <div class="success-check" aria-hidden="true">✓</div>
-
-      <p class="success-eyebrow">Inquiry received</p>
-
-      <h2 id="successTitle">
-        Thank you for sharing your vision.
-      </h2>
-
-      <div class="success-divider"></div>
-
-      <p id="successCopy" class="success-copy">
-        Your project inquiry has been submitted successfully.
-        Our team can now review the details and follow up with you.
-      </p>
-
-      <button
-        type="button"
-        id="successClose"
-        class="success-close"
-      >
-        Return to form
-      </button>
-
-    </div>
-  </section>
 
   <script>
     const form = document.getElementById("contactForm");
-    const statusMessage = document.getElementById("successMessage");
+    const layout = document.getElementById("contactLayout");
+    const thankYou = document.getElementById("thankYou");
+    const status = document.getElementById("status");
     const submitButton = form.querySelector('button[type="submit"]');
-    const successOverlay = document.getElementById("successOverlay");
-    const successClose = document.getElementById("successClose");
-
-    function showSuccessOverlay() {
-      successOverlay.classList.add("visible");
-      successOverlay.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-      successClose.focus();
-    }
-
-    function hideSuccessOverlay() {
-      successOverlay.classList.remove("visible");
-      successOverlay.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    successClose.addEventListener("click", hideSuccessOverlay);
-
-    successOverlay.addEventListener("click", function (event) {
-      if (event.target === successOverlay) {
-        hideSuccessOverlay();
-      }
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (
-        event.key === "Escape" &&
-        successOverlay.classList.contains("visible")
-      ) {
-        hideSuccessOverlay();
-      }
-    });
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
@@ -851,12 +540,10 @@
         referral: data.get("referral") || ""
       };
 
-      statusMessage.classList.remove("error");
-      statusMessage.classList.add("visible");
-      statusMessage.textContent = "Sending your inquiry securely...";
-
+      status.className = "status visible";
+      status.textContent = "Submitting your inquiry...";
       submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
+      submitButton.textContent = "Submitting...";
 
       try {
         const response = await fetch(
@@ -871,24 +558,23 @@
         );
 
         if (!response.ok) {
-          throw new Error("Webhook returned HTTP " + response.status);
+          throw new Error("Submission failed: HTTP " + response.status);
         }
 
         form.reset();
 
-        statusMessage.classList.remove("visible", "error");
-        statusMessage.textContent = "";
-
-        showSuccessOverlay();
+        // Hide the form and show only the thank-you message.
+        layout.style.display = "none";
+        thankYou.classList.add("visible");
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
       } catch (error) {
-        console.error("Webhook error:", error);
+        console.error("Form submission error:", error);
 
-        statusMessage.classList.add("visible", "error");
-        statusMessage.textContent =
-          "We couldn't submit your inquiry just now. Please try again or contact us directly.";
+        status.className = "status visible error";
+        status.textContent =
+          "We couldn't submit your inquiry. Please try again.";
 
-      } finally {
         submitButton.disabled = false;
         submitButton.textContent = "Submit Inquiry";
       }
