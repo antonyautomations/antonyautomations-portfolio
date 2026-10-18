@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,8 @@
       --muted: #666;
       --border: #cbd2dc;
       --soft: #f7f7f7;
+      --gold: #d9c18a;
+      --dark-green: #14251c;
     }
 
     * {
@@ -221,16 +222,6 @@
       accent-color: var(--accent);
     }
 
-    .helper {
-      margin-top: 0;
-      color: #777;
-      font-size: 10px;
-    }
-
-    .address-label {
-      margin-bottom: 0;
-    }
-
     .address-fields {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -270,22 +261,24 @@
       padding: 12px 16px;
       border: none;
       border-radius: 2px;
-      background: var(--accent);
+      background: #198754;
       color: #fff;
       font-size: 13px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, opacity 0.2s;
     }
 
-    .submit-button {
-  background: #198754;
-  color: #ffffff;
-}
+    .submit-button:hover {
+      background: #146c43;
+    }
 
-.submit-button:hover {
-  background: #146c43;
-}
+    .submit-button:disabled {
+      cursor: wait;
+      opacity: 0.7;
+    }
+
+    /* INLINE STATUS MESSAGE */
 
     .success-message {
       display: none;
@@ -295,10 +288,149 @@
       background: #eaf7ed;
       border: 1px solid #bde5c5;
       border-radius: 3px;
+      overflow-wrap: anywhere;
     }
 
     .success-message.visible {
       display: block;
+    }
+
+    .success-message.error {
+      color: #9c2525;
+      background: #fff0f0;
+      border-color: #efc1c1;
+    }
+
+    /* PREMIUM FULL-SCREEN SUCCESS EXPERIENCE */
+
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(15, 24, 20, 0.96);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      overflow-y: auto;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .success-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .success-card {
+      width: min(680px, 100%);
+      padding: clamp(32px, 6vw, 68px) clamp(24px, 6vw, 64px);
+      text-align: center;
+      color: #f8f5ec;
+      background: linear-gradient(145deg, #1e3028, #101b16);
+      border: 1px solid rgba(216, 190, 132, 0.65);
+      border-radius: 18px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.4);
+      transform: translateY(18px) scale(0.98);
+      transition: transform 0.5s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    .success-overlay.visible .success-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .success-check {
+      display: grid;
+      place-items: center;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 26px;
+      color: var(--dark-green);
+      background: var(--gold);
+      border-radius: 50%;
+      font-size: 42px;
+      font-weight: 400;
+      box-shadow: 0 0 0 10px rgba(217, 193, 138, 0.10);
+      animation: checkPop 0.55s 0.15s both;
+    }
+
+    .success-eyebrow {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .success-card h2 {
+      margin: 0 auto 18px;
+      max-width: 560px;
+      color: #fffdf7;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+    }
+
+    .success-copy {
+      max-width: 480px;
+      margin: 0 auto 28px;
+      color: #d8ded9;
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.8;
+    }
+
+    .success-divider {
+      width: 72px;
+      height: 2px;
+      margin: 0 auto 26px;
+      background: var(--gold);
+    }
+
+    .success-close {
+      padding: 13px 25px;
+      border: 1px solid rgba(217, 193, 138, 0.85);
+      border-radius: 3px;
+      color: #f8f5ec;
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .success-close:hover {
+      color: var(--dark-green);
+      background: var(--gold);
+    }
+
+    @keyframes checkPop {
+      0% {
+        transform: scale(0.55);
+        opacity: 0;
+      }
+      75% {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .success-overlay,
+      .success-card {
+        transition: none;
+      }
+
+      .success-check {
+        animation: none;
+      }
     }
 
     /* RESPONSIVE */
@@ -370,7 +502,7 @@
         <h1 class="social-heading">FOLLOW US</h1>
 
         <nav class="social-links" aria-label="Social media links">
-          <!-- Replace # with your actual social media profile URLs -->
+          <!-- Replace # with actual social media profile URLs -->
           <a href="#" aria-label="Facebook">f</a>
           <a href="#" aria-label="Instagram">◎</a>
           <a href="#" aria-label="LinkedIn">in</a>
@@ -381,14 +513,17 @@
 
       </section>
 
-      <!-- RIGHT COLUMN -->
+      <!-- RIGHT COLUMN: CONTACT FORM -->
       <section class="form-panel" aria-label="Project inquiry form">
 
         <form id="contactForm">
           <div class="form-grid">
 
             <div class="field full">
-              <label>Name <span class="required">*</span></label>
+              <label>
+                Name <span class="required">*</span>
+              </label>
+
               <div class="form-grid">
                 <div class="field">
                   <input
@@ -399,6 +534,7 @@
                     required
                   >
                 </div>
+
                 <div class="field">
                   <input
                     type="text"
@@ -415,6 +551,7 @@
               <label for="phone">
                 Phone Number <span class="required">*</span>
               </label>
+
               <input
                 id="phone"
                 type="tel"
@@ -427,6 +564,7 @@
 
             <div class="field full">
               <label for="email">Email</label>
+
               <input
                 id="email"
                 type="email"
@@ -437,18 +575,36 @@
             </div>
 
             <fieldset class="field full">
-              <legend>City <span class="required">*</span></legend>
+              <legend>
+                City <span class="required">*</span>
+              </legend>
+
               <div class="radio-list">
                 <label class="radio-option">
-                  <input type="radio" name="city" value="Tucson Metro Area" required>
+                  <input
+                    type="radio"
+                    name="city"
+                    value="Tucson Metro Area"
+                    required
+                  >
                   Tucson Metro Area
                 </label>
+
                 <label class="radio-option">
-                  <input type="radio" name="city" value="Phoenix Metro Area">
+                  <input
+                    type="radio"
+                    name="city"
+                    value="Phoenix Metro Area"
+                  >
                   Phoenix Metro Area
                 </label>
+
                 <label class="radio-option">
-                  <input type="radio" name="city" value="Other">
+                  <input
+                    type="radio"
+                    name="city"
+                    value="Other"
+                  >
                   Other
                 </label>
               </div>
@@ -458,6 +614,7 @@
               <label for="street">
                 Address <span class="required">*</span>
               </label>
+
               <div class="address-fields">
                 <div class="field full">
                   <input
@@ -515,6 +672,7 @@
               <label for="description">
                 Description of Work <span class="required">*</span>
               </label>
+
               <textarea
                 id="description"
                 name="description"
@@ -524,6 +682,7 @@
 
             <div class="field full">
               <label for="budget">Budget Limit</label>
+
               <input
                 class="budget-input"
                 id="budget"
@@ -542,23 +701,28 @@
 
             <fieldset class="field full">
               <legend>How did you hear about us?</legend>
+
               <div class="radio-list">
                 <label class="radio-option">
                   <input type="radio" name="referral" value="Online Search">
                   Online Search
                 </label>
+
                 <label class="radio-option">
                   <input type="radio" name="referral" value="Social Media">
                   Social Media
                 </label>
+
                 <label class="radio-option">
                   <input type="radio" name="referral" value="Friend Referral">
                   Friend Referral
                 </label>
+
                 <label class="radio-option">
                   <input type="radio" name="referral" value="Advertisement">
                   Advertisement
                 </label>
+
                 <label class="radio-option">
                   <input type="radio" name="referral" value="Other">
                   Other
@@ -570,15 +734,13 @@
               <button class="submit-button" type="submit">
                 Submit Inquiry
               </button>
+
               <div
                 id="successMessage"
                 class="success-message"
                 role="status"
                 aria-live="polite"
-              >
-                Your form passed the browser checks. This demo does not
-                send your inquiry to a business yet.
-              </div>
+              ></div>
             </div>
 
           </div>
@@ -588,76 +750,149 @@
     </div>
   </main>
 
-  
-<script>
-const form = document.getElementById("contactForm");
-const statusMessage = document.getElementById("successMessage");
-const submitButton = form.querySelector('button[type="submit"]');
+  <!-- FULL-SCREEN SUCCESS OVERLAY -->
+  <section
+    id="successOverlay"
+    class="success-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="successTitle"
+    aria-describedby="successCopy"
+    aria-hidden="true"
+  >
+    <div class="success-card">
 
-form.addEventListener("submit", async function (event) {
-  event.preventDefault();
+      <div class="success-check" aria-hidden="true">✓</div>
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
+      <p class="success-eyebrow">Inquiry received</p>
 
-  const data = new FormData(form);
+      <h2 id="successTitle">
+        Thank you for sharing your vision.
+      </h2>
 
-  const payload = {
-    firstName: data.get("firstName") || "",
-    lastName: data.get("lastName") || "",
-    phone: data.get("phone") || "",
-    email: data.get("email") || "",
-    city: data.get("city") || "",
-    street: data.get("street") || "",
-    addressLine2: data.get("addressLine2") || "",
-    addressCity: data.get("addressCity") || "",
-    state: data.get("state") || "",
-    postalCode: data.get("postalCode") || "",
-    description: data.get("description") || "",
-    budget: data.get("budget") || "",
-    referral: data.get("referral") || ""
-  };
+      <div class="success-divider"></div>
 
-  statusMessage.classList.add("visible");
-  statusMessage.textContent = "Sending your enquiry...";
-  submitButton.disabled = true;
-  submitButton.textContent = "Sending...";
+      <p id="successCopy" class="success-copy">
+        Your project inquiry has been submitted successfully.
+        Our team can now review the details and follow up with you.
+      </p>
 
-  try {
-    const response = await fetch(
-      "https://automations-architect.app.n8n.cloud/webhook/the-one-system",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }
-    );
+      <button
+        type="button"
+        id="successClose"
+        class="success-close"
+      >
+        Return to form
+      </button>
 
-    if (!response.ok) {
-      throw new Error("Webhook returned HTTP " + response.status);
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const statusMessage = document.getElementById("successMessage");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const successOverlay = document.getElementById("successOverlay");
+    const successClose = document.getElementById("successClose");
+
+    function showSuccessOverlay() {
+      successOverlay.classList.add("visible");
+      successOverlay.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      successClose.focus();
     }
 
-    statusMessage.textContent =
-      "Thank you! Your enquiry has been submitted successfully.";
+    function hideSuccessOverlay() {
+      successOverlay.classList.remove("visible");
+      successOverlay.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
 
-    form.reset();
+    successClose.addEventListener("click", hideSuccessOverlay);
 
-  } catch (error) {
-    console.error("Webhook error:", error);
+    successOverlay.addEventListener("click", function (event) {
+      if (event.target === successOverlay) {
+        hideSuccessOverlay();
+      }
+    });
 
-    statusMessage.textContent =
-      "Submission failed. Please try again or contact us directly.";
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        successOverlay.classList.contains("visible")
+      ) {
+        hideSuccessOverlay();
+      }
+    });
 
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "Submit Inquiry";
-  }
-});
-</script>
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+
+      const payload = {
+        firstName: data.get("firstName") || "",
+        lastName: data.get("lastName") || "",
+        phone: data.get("phone") || "",
+        email: data.get("email") || "",
+        city: data.get("city") || "",
+        street: data.get("street") || "",
+        addressLine2: data.get("addressLine2") || "",
+        addressCity: data.get("addressCity") || "",
+        state: data.get("state") || "",
+        postalCode: data.get("postalCode") || "",
+        description: data.get("description") || "",
+        budget: data.get("budget") || "",
+        referral: data.get("referral") || ""
+      };
+
+      statusMessage.classList.remove("error");
+      statusMessage.classList.add("visible");
+      statusMessage.textContent = "Sending your inquiry securely...";
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      try {
+        const response = await fetch(
+          "https://automations-architect.app.n8n.cloud/webhook/the-one-system",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Webhook returned HTTP " + response.status);
+        }
+
+        form.reset();
+
+        statusMessage.classList.remove("visible", "error");
+        statusMessage.textContent = "";
+
+        showSuccessOverlay();
+
+      } catch (error) {
+        console.error("Webhook error:", error);
+
+        statusMessage.classList.add("visible", "error");
+        statusMessage.textContent =
+          "We couldn't submit your inquiry just now. Please try again or contact us directly.";
+
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Inquiry";
+      }
+    });
+  </script>
 </body>
 </html>
