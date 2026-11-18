@@ -19,7 +19,6 @@
       --surface: #171717;
       --surface-input: #202020;
       --gold: #d6bd83;
-      --gold-soft: #c9b17d;
       --white: #f5f1e9;
       --muted: #aaa49a;
       --border: rgba(214,189,131,.20);
@@ -61,7 +60,7 @@
       align-items: start;
     }
 
-    /* HERO SECTION */
+    /* HERO */
 
     .hero {
       padding-top: 15px;
@@ -271,6 +270,8 @@
       transform: none;
     }
 
+    /* ERROR MESSAGE */
+
     .message {
       display: none;
       margin-top: 16px;
@@ -280,19 +281,79 @@
       line-height: 1.6;
     }
 
-    .message.success {
-      display: block;
-      color: #b8e4c2;
-      background: rgba(50,150,80,.12);
-      border: 1px solid rgba(80,190,110,.3);
-    }
-
     .message.error {
       display: block;
       color: #ffb7b7;
       background: rgba(200,50,50,.12);
       border: 1px solid rgba(200,70,70,.3);
     }
+
+    /* SUCCESS / THANK YOU SCREEN */
+
+    .thank-you-panel {
+      display: none;
+      text-align: center;
+      padding: 28px 8px 32px;
+      animation: fadeIn .6s ease;
+    }
+
+    .form-card.submitted #formContent {
+      display: none;
+    }
+
+    .form-card.submitted .thank-you-panel {
+      display: block;
+    }
+
+    .thank-you-icon {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    .thank-you-panel h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .thank-you-panel p {
+      color: #b5aea3;
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 370px;
+      margin: 0 auto;
+    }
+
+    .thank-you-divider {
+      width: 45px;
+      height: 2px;
+      background: var(--gold);
+      margin: 24px auto 0;
+      opacity: .7;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FOOTER */
 
     footer {
       text-align: center;
@@ -391,146 +452,171 @@
 
       </section>
 
-      <!-- ENQUIRY FORM -->
+      <!-- FORM CARD -->
 
-      <section class="form-card">
+      <section class="form-card" id="formCard">
 
-        <h2>Get a Free Consultation</h2>
+        <!-- ORIGINAL FORM CONTENT -->
 
-        <p class="subtitle">
-          Enter your details below and our solar team
-          can follow up regarding your enquiry.
-        </p>
+        <div id="formContent">
 
-        <form id="solarForm">
+          <h2>Get a Free Consultation</h2>
 
-          <div class="field">
-            <label for="fullName">Full Name</label>
-            <input
-              type="text"
-              id="fullName"
-              name="full_name"
-              placeholder="Enter your full name"
-              autocomplete="name"
-              maxlength="100"
-              required
-            >
-          </div>
+          <p class="subtitle">
+            Enter your details below and our solar team
+            can follow up regarding your enquiry.
+          </p>
 
-          <div class="field">
-            <label for="phone">WhatsApp / Mobile Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="10-digit mobile number"
-              inputmode="numeric"
-              autocomplete="tel-national"
-              maxlength="10"
-              pattern="[6-9][0-9]{9}"
-              title="Enter a valid 10-digit Indian mobile number"
-              required
-            >
-          </div>
+          <form id="solarForm">
 
-          <div class="field">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="full_name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                maxlength="100"
+                required
+              >
+            </div>
 
-            <span class="bill-label">
-              Monthly Electricity Bill
-            </span>
+            <div class="field">
+              <label for="phone">WhatsApp / Mobile Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="10-digit mobile number"
+                inputmode="numeric"
+                autocomplete="tel-national"
+                maxlength="10"
+                pattern="[6-9][0-9]{9}"
+                title="Enter a valid 10-digit Indian mobile number"
+                required
+              >
+            </div>
 
-            <div class="bill-options">
+            <div class="field">
 
-              <div class="bill-option">
-                <input type="radio" id="bill1"
-                       name="monthly_bill"
-                       value="Less than ₹1500" required>
-                <label for="bill1">Below ₹1,500</label>
+              <span class="bill-label">
+                Monthly Electricity Bill
+              </span>
+
+              <div class="bill-options">
+
+                <div class="bill-option">
+                  <input type="radio" id="bill1"
+                    name="monthly_bill"
+                    value="Less than ₹1500" required>
+                  <label for="bill1">Below ₹1,500</label>
+                </div>
+
+                <div class="bill-option">
+                  <input type="radio" id="bill2"
+                    name="monthly_bill"
+                    value="₹1500 - ₹2500">
+                  <label for="bill2">₹1,500 – ₹2,500</label>
+                </div>
+
+                <div class="bill-option">
+                  <input type="radio" id="bill3"
+                    name="monthly_bill"
+                    value="₹2500 - ₹4000">
+                  <label for="bill3">₹2,500 – ₹4,000</label>
+                </div>
+
+                <div class="bill-option">
+                  <input type="radio" id="bill4"
+                    name="monthly_bill"
+                    value="₹4000 - ₹8000">
+                  <label for="bill4">₹4,000 – ₹8,000</label>
+                </div>
+
+                <div class="bill-option">
+                  <input type="radio" id="bill5"
+                    name="monthly_bill"
+                    value="More than ₹8000">
+                  <label for="bill5">Above ₹8,000</label>
+                </div>
+
               </div>
+            </div>
 
-              <div class="bill-option">
-                <input type="radio" id="bill2"
-                       name="monthly_bill"
-                       value="₹1500 - ₹2500">
-                <label for="bill2">₹1,500 – ₹2,500</label>
-              </div>
+            <div class="field">
+              <label for="pincode">Property PIN Code</label>
+              <input
+                type="text"
+                id="pincode"
+                name="pincode"
+                placeholder="Enter 6-digit PIN code"
+                inputmode="numeric"
+                autocomplete="postal-code"
+                maxlength="6"
+                pattern="[1-9][0-9]{5}"
+                title="Enter a valid 6-digit Indian PIN code"
+                required
+              >
+            </div>
 
-              <div class="bill-option">
-                <input type="radio" id="bill3"
-                       name="monthly_bill"
-                       value="₹2500 - ₹4000">
-                <label for="bill3">₹2,500 – ₹4,000</label>
-              </div>
+            <div class="consent">
 
-              <div class="bill-option">
-                <input type="radio" id="bill4"
-                       name="monthly_bill"
-                       value="₹4000 - ₹8000">
-                <label for="bill4">₹4,000 – ₹8,000</label>
-              </div>
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                value="yes"
+                required
+              >
 
-              <div class="bill-option">
-                <input type="radio" id="bill5"
-                       name="monthly_bill"
-                       value="More than ₹8000">
-                <label for="bill5">Above ₹8,000</label>
-              </div>
+              <label for="consent">
+                I agree to be contacted regarding my solar enquiry.
+                I understand that an AI-powered voice assistant
+                may call me on behalf of the solar business.
+                I have read the
+
+                <a
+                  href="https://antonyautomations.com/project1178/solar-privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Privacy Policy</a>.
+              </label>
 
             </div>
-          </div>
 
-          <div class="field">
-            <label for="pincode">Property PIN Code</label>
-            <input
-              type="text"
-              id="pincode"
-              name="pincode"
-              placeholder="Enter 6-digit PIN code"
-              inputmode="numeric"
-              autocomplete="postal-code"
-              maxlength="6"
-              pattern="[1-9][0-9]{5}"
-              title="Enter a valid 6-digit Indian PIN code"
-              required
-            >
-          </div>
+            <button type="submit" class="submit-btn" id="submitBtn">
+              Submit Enquiry
+            </button>
 
-          <div class="consent">
+            <div
+              id="formMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
 
-            <input
-              type="checkbox"
-              id="consent"
-              name="consent"
-              value="yes"
-              required
-            >
+          </form>
 
-            <label for="consent">
-              I agree to be contacted regarding my solar enquiry.
-              I understand that an AI-powered voice assistant
-              may call me on behalf of the solar business.
-              I have read the
-              <a
-                href="https://antonyautomations.com/project1178/solar-privacy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >Privacy Policy</a>.
-            </label>
+        </div>
 
-          </div>
+        <!-- THANK YOU SCREEN: HIDDEN UNTIL SUCCESS -->
 
-          <button type="submit" class="submit-btn" id="submitBtn">
-            Submit Enquiry
-          </button>
+        <div class="thank-you-panel" id="thankYouPanel" role="status">
 
-          <div
-            id="formMessage"
-            class="message"
-            role="status"
-            aria-live="polite"
-          ></div>
+          <div class="thank-you-icon">✓</div>
 
-        </form>
+          <h2>Thank You!</h2>
+
+          <p>
+            Your enquiry has been received successfully.
+            Our team will contact you as soon as possible
+            to discuss your solar requirements.
+          </p>
+
+          <div class="thank-you-divider"></div>
+
+        </div>
 
       </section>
 
@@ -552,13 +638,13 @@
 
     // =========================================
     // N8N WEBHOOK CONFIGURATION
-    // Replace this placeholder with your
-    // actual production webhook URL.
     // =========================================
 
-    const WEBHOOK_URL = "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions";
+    const WEBHOOK_URL =
+      "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions";
 
     const form = document.getElementById("solarForm");
+    const formCard = document.getElementById("formCard");
     const submitBtn = document.getElementById("submitBtn");
     const message = document.getElementById("formMessage");
 
@@ -569,12 +655,12 @@
       message.className = "message";
       message.textContent = "";
 
-     if (!WEBHOOK_URL || WEBHOOK_URL === "YOUR_N8N_WEBHOOK_URL") {
-  message.textContent =
-    "The form is not connected yet. Please configure the webhook.";
-  message.className = "message error";
-  return;
-}
+      if (!WEBHOOK_URL || WEBHOOK_URL === "YOUR_N8N_WEBHOOK_URL") {
+        message.textContent =
+          "The form is not connected yet. Please configure the webhook.";
+        message.className = "message error";
+        return;
+      }
 
       if (!form.reportValidity()) return;
 
@@ -612,12 +698,15 @@
           throw new Error("Webhook returned HTTP " + response.status);
         }
 
-        message.textContent =
-          "Thank you! Your enquiry has been submitted successfully.";
+        // SHOW THANK YOU SCREEN AFTER SUCCESS
 
-        message.className = "message success";
+        formCard.classList.add("submitted");
 
-        form.reset();
+        document.getElementById("thankYouPanel")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
 
       } catch (error) {
 
@@ -627,8 +716,6 @@
           "We couldn't submit your enquiry right now. Please try again.";
 
         message.className = "message error";
-
-      } finally {
 
         submitBtn.disabled = false;
         submitBtn.textContent = "Submit Enquiry";
