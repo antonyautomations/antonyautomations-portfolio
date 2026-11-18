@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+
+  <title>Rooftop Solar Enquiry | Free Consultation</title>
+  <meta name="description" content="Explore a smarter rooftop solar solution. Submit your details to request a solar consultation.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #101010;
+      --surface: #171717;
+      --surface-input: #202020;
+      --gold: #d6bd83;
+      --gold-soft: #c9b17d;
+      --white: #f5f1e9;
+      --muted: #aaa49a;
+      --border: rgba(214,189,131,.20);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          ellipse at 18% 12%,
+          rgba(214,189,131,.055),
+          transparent 42%
+        ),
+        var(--background);
+      color: var(--white);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 75px 7% 65px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      display: grid;
+      grid-template-columns: 1fr 510px;
+      gap: 85px;
+      align-items: start;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      padding-top: 15px;
+      max-width: 570px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(44px, 5.2vw, 68px);
+      font-weight: 600;
+      line-height: 1.16;
+      letter-spacing: -1.5px;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-description {
+      color: #b5aea3;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 18px;
+      line-height: 1.85;
+      max-width: 520px;
+    }
+
+    .hero-note {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #c6b58e;
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+
+    .hero-note span {
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* FORM CARD */
+
+    .form-card {
+      background: rgba(23,23,23,.96);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 38px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.35);
+    }
+
+    .form-card h2 {
+      color: var(--white);
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -.7px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .field {
+      margin-bottom: 21px;
+    }
+
+    .field label,
+    .bill-label {
+      display: block;
+      color: #e4ded2;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      width: 100%;
+      height: 55px;
+      padding: 0 16px;
+      border: 1px solid #35332f;
+      border-radius: 11px;
+      outline: none;
+      background: var(--surface-input);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 14px;
+      transition: border .2s;
+    }
+
+    input:focus {
+      border-color: var(--gold);
+    }
+
+    input::placeholder {
+      color: #89847c;
+    }
+
+    /* ELECTRICITY BILL OPTIONS */
+
+    .bill-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bill-option {
+      position: relative;
+    }
+
+    .bill-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .bill-option label {
+      min-height: 49px;
+      padding: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid #35332f;
+      border-radius: 10px;
+      background: var(--surface-input);
+      color: #d8d2c7;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .bill-option input:checked + label {
+      border-color: var(--gold);
+      background: rgba(214,189,131,.10);
+      color: var(--gold);
+    }
+
+    .bill-option input:focus-visible + label {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* CONSENT */
+
+    .consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 24px 0;
+      color: #aaa49a;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .consent input {
+      margin-top: 4px;
+      accent-color: var(--gold);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .consent a,
+    footer a {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
+    /* SUBMIT BUTTON */
+
+    .submit-btn {
+      width: 100%;
+      min-height: 57px;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      background: linear-gradient(110deg, #d6bd83, #c2a66b);
+      color: #17140e;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .submit-btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
+    }
+
+    .message {
+      display: none;
+      margin-top: 16px;
+      padding: 13px;
+      border-radius: 9px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .message.success {
+      display: block;
+      color: #b8e4c2;
+      background: rgba(50,150,80,.12);
+      border: 1px solid rgba(80,190,110,.3);
+    }
+
+    .message.error {
+      display: block;
+      color: #ffb7b7;
+      background: rgba(200,50,50,.12);
+      border: 1px solid rgba(200,70,70,.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      border-top: 1px solid rgba(214,189,131,.12);
+      color: #77736c;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 950px) {
+      .container {
+        grid-template-columns: 1fr 440px;
+        gap: 35px;
+      }
+
+      .form-card {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 45px 6% 55px;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .hero {
+        padding-top: 0;
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .form-card {
+        padding: 27px 21px;
+      }
+
+      .form-card h2 {
+        font-size: 26px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .bill-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <div class="container">
+
+      <!-- INTRODUCTION -->
+
+      <section class="hero">
+
+        <div class="eyebrow">
+          ROOFTOP SOLAR ENQUIRY
+        </div>
+
+        <h1>
+          Explore a Smarter Solar Solution.
+        </h1>
+
+        <p class="hero-description">
+          Thinking about rooftop solar for your property?
+          Share a few details to request a consultation
+          about your electricity usage and solar requirements.
+        </p>
+
+        <div class="hero-note">
+          <span></span>
+          A simple enquiry. No obligation to proceed.
+        </div>
+
+      </section>
+
+      <!-- ENQUIRY FORM -->
+
+      <section class="form-card">
+
+        <h2>Get a Free Consultation</h2>
+
+        <p class="subtitle">
+          Enter your details below and our solar team
+          can follow up regarding your enquiry.
+        </p>
+
+        <form id="solarForm">
+
+          <div class="field">
+            <label for="fullName">Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="full_name"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              maxlength="100"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">WhatsApp / Mobile Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="10-digit mobile number"
+              inputmode="numeric"
+              autocomplete="tel-national"
+              maxlength="10"
+              pattern="[6-9][0-9]{9}"
+              title="Enter a valid 10-digit Indian mobile number"
+              required
+            >
+          </div>
+
+          <div class="field">
+
+            <span class="bill-label">
+              Monthly Electricity Bill
+            </span>
+
+            <div class="bill-options">
+
+              <div class="bill-option">
+                <input type="radio" id="bill1"
+                       name="monthly_bill"
+                       value="Less than ₹1500" required>
+                <label for="bill1">Below ₹1,500</label>
+              </div>
+
+              <div class="bill-option">
+                <input type="radio" id="bill2"
+                       name="monthly_bill"
+                       value="₹1500 - ₹2500">
+                <label for="bill2">₹1,500 – ₹2,500</label>
+              </div>
+
+              <div class="bill-option">
+                <input type="radio" id="bill3"
+                       name="monthly_bill"
+                       value="₹2500 - ₹4000">
+                <label for="bill3">₹2,500 – ₹4,000</label>
+              </div>
+
+              <div class="bill-option">
+                <input type="radio" id="bill4"
+                       name="monthly_bill"
+                       value="₹4000 - ₹8000">
+                <label for="bill4">₹4,000 – ₹8,000</label>
+              </div>
+
+              <div class="bill-option">
+                <input type="radio" id="bill5"
+                       name="monthly_bill"
+                       value="More than ₹8000">
+                <label for="bill5">Above ₹8,000</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="pincode">Property PIN Code</label>
+            <input
+              type="text"
+              id="pincode"
+              name="pincode"
+              placeholder="Enter 6-digit PIN code"
+              inputmode="numeric"
+              autocomplete="postal-code"
+              maxlength="6"
+              pattern="[1-9][0-9]{5}"
+              title="Enter a valid 6-digit Indian PIN code"
+              required
+            >
+          </div>
+
+          <div class="consent">
+
+            <input
+              type="checkbox"
+              id="consent"
+              name="consent"
+              value="yes"
+              required
+            >
+
+            <label for="consent">
+              I agree to be contacted regarding my solar enquiry.
+              I understand that an AI-powered voice assistant
+              may call me on behalf of the solar business.
+              I have read the
+              <a
+                href="https://antonyautomations.com/project1178/solar-privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Privacy Policy</a>.
+            </label>
+
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Submit Enquiry
+          </button>
+
+          <div
+            id="formMessage"
+            class="message"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+        </form>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026. All rights reserved.
+    <br>
+    <a
+      href="https://antonyautomations.com/project1178/solar-privacy"
+      target="_blank"
+      rel="noopener noreferrer"
+    >Privacy Policy</a>
+  </footer>
+
+  <script>
+
+    // =========================================
+    // N8N WEBHOOK CONFIGURATION
+    // Replace this placeholder with your
+    // actual production webhook URL.
+    // =========================================
+
+    const WEBHOOK_URL = "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions";
+
+    const form = document.getElementById("solarForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const message = document.getElementById("formMessage");
+
+    form.addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+      message.className = "message";
+      message.textContent = "";
+
+      if (WEBHOOK_URL === "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions") {
+        message.textContent =
+          "The form is not connected yet. Please configure the webhook.";
+        message.className = "message error";
+        return;
+      }
+
+      if (!form.reportValidity()) return;
+
+      const formData = new FormData(form);
+
+      const payload = {
+        full_name: formData.get("full_name").trim(),
+        phone: formData.get("phone").trim(),
+        monthly_bill: formData.get("monthly_bill"),
+        pincode: formData.get("pincode").trim(),
+        consent: formData.get("consent") === "yes",
+        consent_timestamp: new Date().toISOString(),
+        source: "antonyautomations_solar_landing_page",
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString(),
+        utm_source: new URLSearchParams(location.search).get("utm_source"),
+        utm_medium: new URLSearchParams(location.search).get("utm_medium"),
+        utm_campaign: new URLSearchParams(location.search).get("utm_campaign")
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
+      try {
+
+        const response = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Webhook returned HTTP " + response.status);
+        }
+
+        message.textContent =
+          "Thank you! Your enquiry has been submitted successfully.";
+
+        message.className = "message success";
+
+        form.reset();
+
+      } catch (error) {
+
+        console.error("Form submission error:", error);
+
+        message.textContent =
+          "We couldn't submit your enquiry right now. Please try again.";
+
+        message.className = "message error";
+
+      } finally {
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Enquiry";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
