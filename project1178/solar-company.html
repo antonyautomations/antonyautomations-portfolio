@@ -569,12 +569,12 @@
       message.className = "message";
       message.textContent = "";
 
-      if (WEBHOOK_URL === "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions") {
-        message.textContent =
-          "The form is not connected yet. Please configure the webhook.";
-        message.className = "message error";
-        return;
-      }
+     if (!WEBHOOK_URL || WEBHOOK_URL === "https://automation-engineer.app.n8n.cloud/webhook/solar-solutions") {
+  message.textContent =
+    "The form is not connected yet. Please configure the webhook.";
+  message.className = "message error";
+  return;
+}
 
       if (!form.reportValidity()) return;
 
