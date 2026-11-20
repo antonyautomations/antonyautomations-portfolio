@@ -19,13 +19,13 @@ body {
     color: #e6e6e6;
     font-family: "Times New Roman", serif;
     margin: 0;
-    padding: 45px 20px;
+    padding: 28px 24px 45px;
     min-height: 100vh;
 }
 
 .container {
     width: 100%;
-    max-width: 1150px;
+    max-width: 1120px;
     margin: auto;
 }
 
@@ -33,10 +33,10 @@ body {
 
 .back {
     display: inline-block;
-    color: #d6c08d;
+    color: #cbb783;
     text-decoration: none;
-    font-size: 17px;
-    margin-bottom: 45px;
+    font-size: 15px;
+    margin-bottom: 30px;
     transition: 0.3s;
 }
 
@@ -48,19 +48,23 @@ body {
 
 .header {
     text-align: center;
-    margin-bottom: 55px;
+    margin-bottom: 42px;
 }
 
 .header h1 {
     color: #d6c08d;
-    font-size: 2.8rem;
-    margin: 0 0 12px;
+    font-size: 2.35rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin: 0 0 10px;
 }
 
 .header p {
     color: #999;
-    font-size: 18px;
-    letter-spacing: 0.5px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    margin: 0;
 }
 
 /* PROJECT PANELS */
@@ -68,7 +72,7 @@ body {
 .agent-list {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 23px;
 }
 
 .agent-panel {
@@ -78,25 +82,25 @@ body {
     gap: 35px;
 
     width: 100%;
-    min-height: 235px;
+    min-height: 195px;
 
-    padding: 40px 45px;
+    padding: 30px 36px;
 
-    background: #151517;
-    border: 1px solid #29292b;
-    border-radius: 18px;
+    background: #141416;
+    border: 1px solid #393329;
+    border-radius: 13px;
 
     text-decoration: none;
     color: inherit;
 
-    transition: all 0.35s ease;
+    transition: all 0.3s ease;
 }
 
 .agent-panel:hover {
-    border-color: #b9a477;
-    background: #19191b;
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(214,192,141,0.08);
+    border-color: #9c8557;
+    background: #18181a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(214,192,141,0.06);
 }
 
 /* LEFT CONTENT */
@@ -107,49 +111,54 @@ body {
 
 .project-number {
     color: #b9a477;
-    font-size: 14px;
-    letter-spacing: 3px;
-    margin-bottom: 17px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    margin-bottom: 13px;
 }
 
 .agent-content h2 {
     color: #d6c08d;
-    font-size: 2rem;
-    margin: 0 0 15px;
+    font-size: 1.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    margin: 0 0 12px;
 }
 
 .agent-content p {
     color: #aaa;
-    font-size: 18px;
-    line-height: 1.7;
-    max-width: 680px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
+    max-width: 650px;
     margin: 0;
 }
 
 /* RIGHT SIDE */
 
 .agent-action {
-    min-width: 190px;
+    min-width: 175px;
     text-align: right;
 }
 
 .language-label {
     display: inline-block;
-    color: #d6c08d;
-    border: 1px solid #665638;
-    padding: 9px 17px;
-    border-radius: 5px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
+    color: #cbb783;
+    border: 1px solid #514630;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1.8px;
+    margin-bottom: 20px;
 }
 
 .explore {
     display: block;
     color: #d6c08d;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
     transition: 0.3s;
 }
 
@@ -162,7 +171,11 @@ body {
 @media (max-width: 700px) {
 
     body {
-        padding: 28px 16px;
+        padding: 25px 16px 35px;
+    }
+
+    .header {
+        margin-bottom: 32px;
     }
 
     .header h1 {
@@ -170,23 +183,27 @@ body {
     }
 
     .header p {
-        font-size: 16px;
+        font-size: 14px;
+    }
+
+    .agent-list {
+        gap: 18px;
     }
 
     .agent-panel {
         flex-direction: column;
         align-items: flex-start;
-        padding: 28px 24px;
+        padding: 25px 23px;
         min-height: 0;
-        gap: 25px;
+        gap: 22px;
     }
 
     .agent-content h2 {
-        font-size: 1.65rem;
+        font-size: 1.45rem;
     }
 
     .agent-content p {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .agent-action {
@@ -195,7 +212,7 @@ body {
     }
 
     .language-label {
-        margin-bottom: 15px;
+        margin-bottom: 13px;
     }
 }
 
