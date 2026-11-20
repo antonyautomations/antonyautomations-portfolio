@@ -24,19 +24,6 @@ body {
     line-height: 1.75;
 }
 
-.back {
-    display: inline-block;
-    color: #d6c08d;
-    text-decoration: none;
-    font-size: 15px;
-    margin-bottom: 35px;
-    transition: 0.3s;
-}
-
-.back:hover {
-    color: #ffffff;
-}
-
 h1 {
     color: #d6c08d;
     font-size: 2.5rem;
@@ -180,11 +167,6 @@ li {
 
 <body>
 
-<a href="voiceagents.html" class="back">
-    ← Back to Voice Agent Projects
-</a>
-
-
 <!-- PROJECT INTRODUCTION -->
 
 <div class="project-label">
@@ -216,7 +198,7 @@ a voice provider. I designed its instructions around the
 responsibilities of a dental clinic receptionist.
 </p>
 
-<img src="./English%202.png"
+<img src="english-vapi.png"
      alt="Vapi dental clinic receptionist assistant configuration">
 
 <div class="image-caption">
@@ -235,35 +217,43 @@ can take staff time, particularly when callers need availability
 information or want to schedule an appointment.
 </p>
 
+<ul>
+<li>Staff must handle incoming appointment inquiries.</li>
+<li>Callers need information about availability.</li>
+<li>Appointment details must be collected accurately.</li>
+<li>Bookings require confirmation before they are made.</li>
+</ul>
+
+
+<!-- WHY IT MATTERS -->
+
+<h2>Why This Matters</h2>
+
 <p>
-The goal was to create a voice-based assistant that could
-handle these conversations naturally and assist callers
-without relying entirely on manual reception.
+A voice-based assistant can help businesses handle routine
+conversations and collect information consistently, allowing
+staff to focus on other responsibilities.
+</p>
+
+<p>
+The goal was to create an assistant that could understand
+callers and guide them through an appointment request naturally.
 </p>
 
 
-<!-- HOW IT WORKS -->
+<!-- SYSTEM -->
 
 <h2>How The System Works</h2>
 
 <ul>
-
 <li>The caller starts a natural voice conversation with the AI receptionist.</li>
-
 <li>The agent understands why the caller is contacting the clinic.</li>
-
 <li>It collects the caller's name and phone number.</li>
-
 <li>It understands the reason for the appointment.</li>
-
 <li>It asks for the caller's preferred date and time.</li>
-
-<li>The appointment availability is checked through the connected backend workflow.</li>
-
+<li>Appointment availability is checked through the connected backend workflow.</li>
 <li>The agent requests confirmation before proceeding with a booking.</li>
-
-<li>After a successful booking, it clearly communicates the appointment details.</li>
-
+<li>After a successful booking, it communicates the appointment details.</li>
 </ul>
 
 
@@ -278,7 +268,7 @@ The interface presents the assistant as a digital dental
 receptionist rather than a conventional text-based chatbot.
 </p>
 
-<img src="./English%20Voice%20Agent.png"
+<img src="english-voice-interface.png"
      alt="Custom AI dental receptionist voice interaction interface">
 
 <div class="image-caption">
@@ -286,37 +276,31 @@ Custom voice-agent interface for interacting with the AI receptionist.
 </div>
 
 
-<!-- N8N BACKEND -->
+<!-- BACKEND -->
 
 <h2>Vapi + n8n Backend Integration</h2>
 
 <p>
 Vapi serves as the conversational voice layer, while n8n
-handles the backend automation and connected business logic.
+handles backend automation and connected business logic.
 This separation allows the voice agent to focus on understanding
 the caller while backend workflows handle the required actions.
 </p>
 
 <div class="info-box">
-
 <h3>Voice Layer — Vapi</h3>
-
 <p>
 Handles speech recognition, AI conversation, voice generation
-and the interaction between the caller and the assistant.
+and interaction between the caller and the assistant.
 </p>
-
 </div>
 
 <div class="info-box">
-
 <h3>Automation Layer — n8n</h3>
-
 <p>
 Orchestrates backend tool calls, appointment availability
 checks and booking-related actions through connected workflows.
 </p>
-
 </div>
 
 
@@ -325,23 +309,14 @@ checks and booking-related actions through connected workflows.
 <h2>Key Capabilities</h2>
 
 <ul>
-
 <li>Natural English voice conversations</li>
-
 <li>Caller intent understanding</li>
-
 <li>Structured collection of caller information</li>
-
 <li>Appointment request handling</li>
-
 <li>Availability checking through backend tools</li>
-
 <li>Confirmation-based booking flow</li>
-
 <li>Clear appointment communication</li>
-
 <li>Conversation-aware call termination</li>
-
 </ul>
 
 
@@ -350,7 +325,6 @@ checks and booking-related actions through connected workflows.
 <h2>Technology Stack</h2>
 
 <div class="tech-list">
-
 <span class="tech">Vapi</span>
 <span class="tech">n8n</span>
 <span class="tech">GPT-4.1</span>
@@ -358,7 +332,6 @@ checks and booking-related actions through connected workflows.
 <span class="tech">Vapi Voice</span>
 <span class="tech">Webhooks</span>
 <span class="tech">API Integration</span>
-
 </div>
 
 
@@ -367,41 +340,34 @@ checks and booking-related actions through connected workflows.
 <h2>Technical Learning & Implementation</h2>
 
 <p>
-Building this project helped me explore how conversational
-AI systems work beyond traditional text-based automation.
-I worked with voice-agent configuration, system prompts,
-speech-to-text, language models, voice generation and
-backend tool orchestration.
+Building this project helped me explore conversational AI
+beyond traditional text-based automation. I worked with
+voice-agent configuration, system prompts, speech-to-text,
+language models, voice generation and backend tool orchestration.
 </p>
 
 <p>
-I also gained practical experience in connecting a voice
-interface with n8n workflows, handling appointment-related
-logic, structuring tool interactions and improving the
-agent's conversation behaviour.
+I also gained practical experience connecting a voice interface
+with n8n workflows, handling appointment-related logic,
+structuring tool interactions and improving conversation behaviour.
 </p>
 
 
 <!-- CONCLUSION -->
 
 <div class="info-box">
-
 <h3>Project Outcome</h3>
-
 <p>
-A voice-based dental receptionist concept combining
-conversational AI with backend workflow automation,
-demonstrating how voice agents can interact with callers
-and assist with appointment-related business processes.
+A voice-based dental receptionist combining conversational AI
+with backend workflow automation to assist callers with
+appointment-related interactions.
 </p>
-
 </div>
 
 
 <a href="voiceagents.html" class="cta">
 ← Back to Voice Agent Projects
 </a>
-
 
 </body>
 </html>
