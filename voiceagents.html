@@ -5,10 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AI Voice Agent Systems - Antony Automations</title>
+<title>AI Voice Agent Systems | Antony Automations</title>
 <link rel="icon" type="image/png" href="favicon.png">
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -18,109 +19,186 @@ body {
     color: #e6e6e6;
     font-family: "Times New Roman", serif;
     margin: 0;
-    padding: 50px 25px;
+    padding: 45px 20px;
     min-height: 100vh;
 }
 
 .container {
     width: 100%;
-    max-width: 1250px;
+    max-width: 1150px;
     margin: auto;
 }
+
+/* BACK BUTTON */
 
 .back {
     display: inline-block;
     color: #d6c08d;
     text-decoration: none;
-    margin-bottom: 35px;
     font-size: 17px;
+    margin-bottom: 45px;
+    transition: 0.3s;
 }
 
-h1 {
-    text-align: center;
-    color: #d6c08d;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.back:hover {
+    color: #ffffff;
 }
 
-.subtitle {
+/* HEADER */
+
+.header {
     text-align: center;
-    color: #999;
-    font-size: 18px;
     margin-bottom: 55px;
 }
 
-.agent-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
+.header h1 {
+    color: #d6c08d;
+    font-size: 2.8rem;
+    margin: 0 0 12px;
 }
 
-.agent-card {
+.header p {
+    color: #999;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+/* PROJECT PANELS */
+
+.agent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.agent-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+
+    width: 100%;
+    min-height: 235px;
+
+    padding: 40px 45px;
+
     background: #151517;
     border: 1px solid #29292b;
     border-radius: 18px;
-    padding: 35px;
-    min-height: 420px;
-    transition: 0.3s ease;
+
+    text-decoration: none;
+    color: inherit;
+
+    transition: all 0.35s ease;
 }
 
-.agent-card:hover {
-    border-color: #d6c08d;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 35px rgba(214,192,141,0.08);
+.agent-panel:hover {
+    border-color: #b9a477;
+    background: #19191b;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(214,192,141,0.08);
 }
 
-.number {
+/* LEFT CONTENT */
+
+.agent-content {
+    flex: 1;
+}
+
+.project-number {
     color: #b9a477;
-    font-size: 15px;
+    font-size: 14px;
     letter-spacing: 3px;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 }
 
-.agent-card h2 {
+.agent-content h2 {
     color: #d6c08d;
-    font-size: 27px;
-    margin: 0 0 20px;
+    font-size: 2rem;
+    margin: 0 0 15px;
 }
 
-.image-placeholder {
-    width: 100%;
-    min-height: 190px;
-    border: 1px dashed #62563c;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    background: #1b1b1d;
-    text-align: center;
-    margin-top: 20px;
+.agent-content p {
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0;
 }
 
-.image-placeholder span {
-    color: #b9a477;
+/* RIGHT SIDE */
+
+.agent-action {
+    min-width: 190px;
+    text-align: right;
+}
+
+.language-label {
+    display: inline-block;
+    color: #d6c08d;
+    border: 1px solid #665638;
+    padding: 9px 17px;
+    border-radius: 5px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.explore {
+    display: block;
+    color: #d6c08d;
     font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
+
+.agent-panel:hover .explore {
+    color: #ffffff;
+}
+
+/* MOBILE */
 
 @media (max-width: 700px) {
+
     body {
-        padding: 30px 16px;
+        padding: 28px 16px;
     }
 
-    h1 {
+    .header h1 {
         font-size: 2rem;
     }
 
-    .agent-grid {
-        grid-template-columns: 1fr;
+    .header p {
+        font-size: 16px;
     }
 
-    .agent-card {
-        padding: 25px;
-        min-height: 350px;
+    .agent-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+        min-height: 0;
+        gap: 25px;
+    }
+
+    .agent-content h2 {
+        font-size: 1.65rem;
+    }
+
+    .agent-content p {
+        font-size: 16px;
+    }
+
+    .agent-action {
+        width: 100%;
+        text-align: left;
+    }
+
+    .language-label {
+        margin-bottom: 15px;
     }
 }
+
 </style>
 </head>
 
@@ -128,44 +206,99 @@ h1 {
 
 <div class="container">
 
-    <a href="index.html" class="back">← Back to Portfolio</a>
+    <a href="index.html" class="back">
+        ← Back to Portfolio
+    </a>
 
-    <h1>AI Voice Agent Systems</h1>
+    <!-- HEADER -->
 
-    <p class="subtitle">
-        Intelligent Voice Automation Projects
-    </p>
+    <div class="header">
 
-    <div class="agent-grid">
+        <h1>AI Voice Agent Systems</h1>
 
-        <!-- ENGLISH VOICE AGENT -->
+        <p>
+            Explore Intelligent Voice Automation Projects
+        </p>
 
-        <div class="agent-card">
+    </div>
 
-            <div class="number">PROJECT 01</div>
 
-            <h2>English Voice Agent</h2>
+    <!-- PROJECT SELECTION -->
 
-            <div class="image-placeholder">
-                <span>English Voice Agent Images</span>
+    <div class="agent-list">
+
+
+        <!-- PROJECT 01: ENGLISH VOICE AGENT -->
+
+        <a href="englishvoiceagent.html"
+           class="agent-panel">
+
+            <div class="agent-content">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h2>English-Speaking Voice Agent</h2>
+
+                <p>
+                    An AI-powered voice agent designed to handle
+                    natural customer conversations, understand
+                    requests and automate business interactions.
+                </p>
+
             </div>
 
-        </div>
+            <div class="agent-action">
 
+                <span class="language-label">
+                    ENGLISH
+                </span>
 
-        <!-- MULTILINGUAL VOICE AGENT -->
+                <span class="explore">
+                    EXPLORE PROJECT →
+                </span>
 
-        <div class="agent-card">
-
-            <div class="number">PROJECT 02</div>
-
-            <h2>Multilingual Voice Agent</h2>
-
-            <div class="image-placeholder">
-                <span>Multilingual Voice Agent Images</span>
             </div>
 
-        </div>
+        </a>
+
+
+        <!-- PROJECT 02: MULTILINGUAL VOICE AGENT -->
+
+        <a href="multilingualvoiceagent.html"
+           class="agent-panel">
+
+            <div class="agent-content">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h2>Multilingual Voice Agent</h2>
+
+                <p>
+                    A multilingual AI voice agent designed to
+                    communicate with customers across different
+                    languages and automate voice-based interactions.
+                </p>
+
+            </div>
+
+            <div class="agent-action">
+
+                <span class="language-label">
+                    MULTILINGUAL
+                </span>
+
+                <span class="explore">
+                    EXPLORE PROJECT →
+                </span>
+
+            </div>
+
+        </a>
+
 
     </div>
 
