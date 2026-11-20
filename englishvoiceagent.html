@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>English AI Voice Agent - Antony Automations</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0c;
+    color: #e6e6e6;
+    font-family: "Times New Roman", serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 35px 24px 50px;
+    line-height: 1.75;
+}
+
+.back {
+    display: inline-block;
+    color: #d6c08d;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 35px;
+    transition: 0.3s;
+}
+
+.back:hover {
+    color: #ffffff;
+}
+
+h1 {
+    color: #d6c08d;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+h2 {
+    color: #d6c08d;
+    font-size: 1.65rem;
+    font-weight: 500;
+    margin-top: 42px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #d6c08d;
+    font-weight: 500;
+}
+
+p {
+    color: #b2b0aa;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: #d6c08d;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.project-label {
+    color: #b9a477;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.highlight {
+    color: #d6c08d;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #302b22;
+    margin: 22px 0;
+}
+
+.image-caption {
+    color: #777;
+    font-size: 13px;
+    text-align: center;
+    margin-top: -12px;
+    margin-bottom: 28px;
+}
+
+ul {
+    padding-left: 23px;
+    margin-bottom: 20px;
+}
+
+li {
+    color: #b2b0aa;
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.info-box {
+    background: #151517;
+    border: 1px solid #393329;
+    border-radius: 10px;
+    padding: 22px 25px;
+    margin: 25px 0;
+}
+
+.info-box p {
+    margin-bottom: 0;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tech {
+    border: 1px solid #514630;
+    color: #d6c08d;
+    padding: 7px 13px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 20px;
+    border: 1px solid #d6c08d;
+    color: #d6c08d;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background: #d6c08d;
+    color: #000;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 17px 40px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    p, li {
+        font-size: 15px;
+    }
+
+    .info-box {
+        padding: 18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="voiceagents.html" class="back">
+    ← Back to Voice Agent Projects
+</a>
+
+
+<!-- PROJECT INTRODUCTION -->
+
+<div class="project-label">
+    PROJECT 01 · ENGLISH VOICE AUTOMATION
+</div>
+
+<h1>AI-Powered Dental Clinic Voice Receptionist</h1>
+
+<p class="subtitle">
+An intelligent voice agent that handles dental appointment conversations naturally.
+</p>
+
+<p>
+I built an AI-powered English-speaking voice receptionist using
+Vapi and n8n, designed to handle incoming dental clinic inquiries,
+collect caller information and assist with appointment scheduling
+through natural voice conversations.
+</p>
+
+
+<!-- IMAGE 01: VAPI CONFIGURATION -->
+
+<h2>Inside the Voice Agent</h2>
+
+<p>
+The assistant was configured in Vapi with a conversational
+system prompt, speech recognition, an AI language model and
+a voice provider. I designed its instructions around the
+responsibilities of a dental clinic receptionist.
+</p>
+
+<img src="./English%202.png"
+     alt="Vapi dental clinic receptionist assistant configuration">
+
+<div class="image-caption">
+Vapi assistant configuration — model, voice, transcription and conversational instructions.
+</div>
+
+
+<!-- PROBLEM -->
+
+<h2>The Problem</h2>
+
+<p>
+Dental clinics regularly receive appointment inquiries and
+requests over the phone. Handling every conversation manually
+can take staff time, particularly when callers need availability
+information or want to schedule an appointment.
+</p>
+
+<p>
+The goal was to create a voice-based assistant that could
+handle these conversations naturally and assist callers
+without relying entirely on manual reception.
+</p>
+
+
+<!-- HOW IT WORKS -->
+
+<h2>How The System Works</h2>
+
+<ul>
+
+<li>The caller starts a natural voice conversation with the AI receptionist.</li>
+
+<li>The agent understands why the caller is contacting the clinic.</li>
+
+<li>It collects the caller's name and phone number.</li>
+
+<li>It understands the reason for the appointment.</li>
+
+<li>It asks for the caller's preferred date and time.</li>
+
+<li>The appointment availability is checked through the connected backend workflow.</li>
+
+<li>The agent requests confirmation before proceeding with a booking.</li>
+
+<li>After a successful booking, it clearly communicates the appointment details.</li>
+
+</ul>
+
+
+<!-- IMAGE 02: USER INTERFACE -->
+
+<h2>The Voice Interaction Interface</h2>
+
+<p>
+I also created a dedicated interface for the voice receptionist,
+giving users a simple way to start speaking with the AI.
+The interface presents the assistant as a digital dental
+receptionist rather than a conventional text-based chatbot.
+</p>
+
+<img src="./English%20Voice%20Agent.png"
+     alt="Custom AI dental receptionist voice interaction interface">
+
+<div class="image-caption">
+Custom voice-agent interface for interacting with the AI receptionist.
+</div>
+
+
+<!-- N8N BACKEND -->
+
+<h2>Vapi + n8n Backend Integration</h2>
+
+<p>
+Vapi serves as the conversational voice layer, while n8n
+handles the backend automation and connected business logic.
+This separation allows the voice agent to focus on understanding
+the caller while backend workflows handle the required actions.
+</p>
+
+<div class="info-box">
+
+<h3>Voice Layer — Vapi</h3>
+
+<p>
+Handles speech recognition, AI conversation, voice generation
+and the interaction between the caller and the assistant.
+</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Automation Layer — n8n</h3>
+
+<p>
+Orchestrates backend tool calls, appointment availability
+checks and booking-related actions through connected workflows.
+</p>
+
+</div>
+
+
+<!-- CAPABILITIES -->
+
+<h2>Key Capabilities</h2>
+
+<ul>
+
+<li>Natural English voice conversations</li>
+
+<li>Caller intent understanding</li>
+
+<li>Structured collection of caller information</li>
+
+<li>Appointment request handling</li>
+
+<li>Availability checking through backend tools</li>
+
+<li>Confirmation-based booking flow</li>
+
+<li>Clear appointment communication</li>
+
+<li>Conversation-aware call termination</li>
+
+</ul>
+
+
+<!-- TECH STACK -->
+
+<h2>Technology Stack</h2>
+
+<div class="tech-list">
+
+<span class="tech">Vapi</span>
+<span class="tech">n8n</span>
+<span class="tech">GPT-4.1</span>
+<span class="tech">Soniox STT</span>
+<span class="tech">Vapi Voice</span>
+<span class="tech">Webhooks</span>
+<span class="tech">API Integration</span>
+
+</div>
+
+
+<!-- LEARNING -->
+
+<h2>Technical Learning & Implementation</h2>
+
+<p>
+Building this project helped me explore how conversational
+AI systems work beyond traditional text-based automation.
+I worked with voice-agent configuration, system prompts,
+speech-to-text, language models, voice generation and
+backend tool orchestration.
+</p>
+
+<p>
+I also gained practical experience in connecting a voice
+interface with n8n workflows, handling appointment-related
+logic, structuring tool interactions and improving the
+agent's conversation behaviour.
+</p>
+
+
+<!-- CONCLUSION -->
+
+<div class="info-box">
+
+<h3>Project Outcome</h3>
+
+<p>
+A voice-based dental receptionist concept combining
+conversational AI with backend workflow automation,
+demonstrating how voice agents can interact with callers
+and assist with appointment-related business processes.
+</p>
+
+</div>
+
+
+<a href="voiceagents.html" class="cta">
+← Back to Voice Agent Projects
+</a>
+
+
+</body>
+</html>
