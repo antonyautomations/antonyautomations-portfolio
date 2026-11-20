@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Multilingual AI Voice Agent - Antony Automations</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b0c;
+    color: #e6e6e6;
+    font-family: "Times New Roman", serif;
+    max-width: 1000px;
+    margin: auto;
+    padding: 35px 24px 50px;
+    line-height: 1.75;
+}
+
+h1 {
+    color: #d6c08d;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+h2 {
+    color: #d6c08d;
+    font-size: 1.65rem;
+    font-weight: 500;
+    margin-top: 42px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #d6c08d;
+    font-weight: 500;
+}
+
+p {
+    color: #b2b0aa;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: #d6c08d;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.project-label {
+    color: #b9a477;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #302b22;
+    margin: 22px 0;
+}
+
+.image-caption {
+    color: #777;
+    font-size: 13px;
+    text-align: center;
+    margin-top: -12px;
+    margin-bottom: 28px;
+}
+
+ul {
+    padding-left: 23px;
+    margin-bottom: 20px;
+}
+
+li {
+    color: #b2b0aa;
+    font-size: 16px;
+    margin-bottom: 9px;
+}
+
+.info-box {
+    background: #151517;
+    border: 1px solid #393329;
+    border-radius: 10px;
+    padding: 22px 25px;
+    margin: 25px 0;
+}
+
+.info-box p {
+    margin-bottom: 0;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.tech {
+    border: 1px solid #514630;
+    color: #d6c08d;
+    padding: 7px 13px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 20px;
+    border: 1px solid #d6c08d;
+    color: #d6c08d;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.cta:hover {
+    background: #d6c08d;
+    color: #000;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 17px 40px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    p, li {
+        font-size: 15px;
+    }
+
+    .info-box {
+        padding: 18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- PROJECT INTRODUCTION -->
+
+<div class="project-label">
+    PROJECT 02 · MULTILINGUAL VOICE AUTOMATION
+</div>
+
+<h1>Multilingual AI Voice Agent for Solar Businesses</h1>
+
+<p class="subtitle">
+An intelligent outbound voice agent designed to communicate with customers across multiple languages.
+</p>
+
+<p>
+I independently built a multilingual AI outbound voice agent
+using Bolna and n8n, designed for solar businesses to follow up
+with people who have expressed interest in rooftop solar
+solutions. The system uses conversational AI to understand
+customer responses, assess their interest and collect relevant
+information for the solar consultation process.
+</p>
+
+
+<!-- BOLNA CONFIGURATION -->
+
+<h2>Inside the Voice Agent</h2>
+
+<p>
+I configured the voice agent in Bolna Agent Studio, designing
+its conversational instructions, language-handling behaviour
+and interaction flow. The agent was designed to communicate
+in English, Hindi and other supported languages based on
+the customer's language preference.
+</p>
+
+<img src="bolna-agent-studio.png"
+     alt="Bolna multilingual solar voice agent configuration">
+
+<div class="image-caption">
+Bolna Agent Studio — multilingual instructions and language-handling configuration.
+</div>
+
+
+<!-- PROBLEM -->
+
+<h2>The Business Challenge</h2>
+
+<p>
+Solar businesses often need to follow up with people who have
+enquired about rooftop solar installations. These conversations
+involve understanding customer requirements, explaining the
+next steps and identifying interested prospects.
+</p>
+
+<p>
+Language differences can make these conversations more
+challenging, particularly when businesses communicate with
+customers across different regions of India.
+</p>
+
+<p>
+The objective was to build an outbound AI voice agent that
+could conduct these conversations naturally across supported
+languages and help structure the information collected.
+</p>
+
+
+<!-- LANGUAGE HANDLING -->
+
+<h2>Multilingual Conversation Handling</h2>
+
+<p>
+One of the important parts of this project was designing
+how the agent identifies and maintains the customer's
+preferred language throughout the conversation.
+</p>
+
+<ul>
+
+<li>Supports English and Hindi conversations.</li>
+
+<li>Designed to accommodate additional supported languages.</li>
+
+<li>Uses explicit language selection and language-handling instructions.</li>
+
+<li>Separates lines that should be translated from those that should remain unchanged.</li>
+
+<li>Maintains the selected language during the conversation.</li>
+
+<li>Uses natural conversational responses rather than reading a rigid questionnaire.</li>
+
+</ul>
+
+
+<!-- CALL SCREENSHOT -->
+
+<h2>Outbound Voice Interaction</h2>
+
+<p>
+The agent was designed to initiate outbound conversations
+with prospective solar customers. It introduces the solar
+consultation, understands the customer's requirements and
+guides the conversation based on their responses.
+</p>
+
+<img src="solar-outbound-call.jpeg"
+     alt="Outbound AI voice agent call interface">
+
+<div class="image-caption">
+Outbound voice interaction during project testing.
+</div>
+
+
+<!-- WORKFLOW -->
+
+<h2>How The System Works</h2>
+
+<ul>
+
+<li>The outbound workflow initiates a call to the selected contact.</li>
+
+<li>The AI agent introduces itself and explains the purpose of the call.</li>
+
+<li>It identifies the customer's preferred language.</li>
+
+<li>The conversation continues in the selected language.</li>
+
+<li>It asks relevant questions about the customer's property and electricity usage.</li>
+
+<li>It understands the customer's interest in rooftop solar.</li>
+
+<li>It collects suitable callback or site-survey preferences when appropriate.</li>
+
+<li>The collected information can be passed to the backend workflow for further processing.</li>
+
+</ul>
+
+
+<!-- BACKEND -->
+
+<h2>Bolna + n8n Integration</h2>
+
+<p>
+The system combines Bolna's conversational voice capabilities
+with n8n's workflow automation. Bolna manages the voice
+interaction, while n8n acts as the backend orchestration layer
+for connected business processes and tool execution.
+</p>
+
+<div class="info-box">
+
+<h3>Voice Layer — Bolna</h3>
+
+<p>
+Handles outbound voice conversations, speech processing,
+multilingual interaction and AI-driven customer responses.
+</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Automation Layer — n8n</h3>
+
+<p>
+Connects backend workflows, processes incoming tool requests
+and orchestrates the business logic required by the voice agent.
+</p>
+
+</div>
+
+
+<!-- BUSINESS USE CASES -->
+
+<h2>Business Applications</h2>
+
+<ul>
+
+<li>Outbound solar lead follow-ups</li>
+
+<li>Rooftop solar consultation conversations</li>
+
+<li>Customer interest qualification</li>
+
+<li>Property and electricity usage information collection</li>
+
+<li>Callback and site-survey request collection</li>
+
+<li>Multilingual customer engagement</li>
+
+</ul>
+
+
+<!-- TECH STACK -->
+
+<h2>Technology Stack</h2>
+
+<div class="tech-list">
+
+<span class="tech">Bolna AI</span>
+<span class="tech">n8n</span>
+<span class="tech">Voice AI Agents</span>
+<span class="tech">Multilingual AI</span>
+<span class="tech">API Integration</span>
+<span class="tech">Webhooks</span>
+<span class="tech">Prompt Engineering</span>
+
+</div>
+
+
+<!-- LEARNING -->
+
+<h2>Technical Learning & Implementation</h2>
+
+<p>
+Building this project helped me explore outbound voice
+automation and multilingual conversational AI. I worked
+with Bolna Agent Studio, structured conversational prompts,
+language selection, translation behaviour and voice-agent
+configuration.
+</p>
+
+<p>
+I also explored how to connect voice-agent tools with n8n,
+orchestrate backend actions, structure customer conversations
+and design workflows around real business processes.
+</p>
+
+<p>
+The project strengthened my understanding of how voice AI,
+workflow automation and multilingual customer interactions
+can work together in a business system.
+</p>
+
+
+<!-- CONCLUSION -->
+
+<div class="info-box">
+
+<h3>Project Outcome</h3>
+
+<p>
+A multilingual outbound AI voice-agent prototype for solar
+businesses, combining Bolna's conversational capabilities
+with n8n backend automation to support customer follow-ups
+and solar consultation workflows.
+</p>
+
+</div>
+
+
+<a href="voiceagents.html" class="cta">
+← Back to Voice Agent Projects
+</a>
+
+
+</body>
+</html>
